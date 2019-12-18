@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package testdata.subdir;
+
+message IntegerMessage {
+  int32 value = 1;
+
+  message InnerNestedMessage {
+    float value = 1;
+  }
+
+  message NestedEmpty {
+  }
+}
+
+message Empty {
+}
+
+message AllTypes {
+  double double_value = 1;
+  float float_value = 2;
+  int32 int32_value = 3;
+  int64 int64_value = 4;
+  uint32 uint32_value = 5;
+  uint64 uint64_value = 6;
+  sint32 sint32_value = 7;
+  sint64 sint64_value = 8;
+  fixed32 fixed32_value = 9;
+  fixed64 fixed64_value = 10;
+  sfixed32 sfixed32_value = 11;
+  sfixed64 sfixed64_value = 12;
+  bool bool_value = 13;
+  string string_value = 14;
+  bytes bytes_value = 15;
+
+  enum Corpus {
+    UNIVERSAL = 0;
+    WEB = 1;
+    IMAGES = 2;
+    LOCAL = 3;
+    NEWS = 4;
+    PRODUCTS = 5;
+    VIDEO = 6;
+  }
+  Corpus enum_value = 16;
+
+  enum EnumAllowingAlias {
+    option allow_alias = true;
+    UNKNOWN = 0;
+    STARTED = 1;
+    RUNNING = 1;
+  }
+  EnumAllowingAlias alias_enum_value = 17;
+
+  IntegerMessage nested_value = 18;
+  repeated IntegerMessage repeated_nested_value = 19;
+  repeated int32 repeated_int32_value = 20;
+
+  message InnerMessage {
+    string value = 1;
+  }
+  InnerMessage inner_value = 21;
+
+  IntegerMessage.InnerNestedMessage inner_nested_value = 22;
+
+  oneof test_oneof {
+    string name = 23;
+    bool sub_message = 24;
+  }
+
+  map<string, IntegerMessage> string_map_value = 25;
+  map<int32, IntegerMessage> int32_map_value = 26;
+}

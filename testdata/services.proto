@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package testdata;
+
+import "subdir/messages.proto";
+
+// The mathematics service definition.
+service SimpleMathematics {
+  // Negates the input
+  rpc Negate (subdir.IntegerMessage) returns (subdir.IntegerMessage);
+
+  // Report the median of a stream of integers
+  rpc Median (stream subdir.IntegerMessage) returns (subdir.IntegerMessage);
+}
+
+service ComplexMathematics {
+  // Stream the first N numbers in the Fibonacci sequence
+  rpc Fibonacci (subdir.IntegerMessage) returns (stream subdir.IntegerMessage);
+
+  // Accept a stream of integers, and report whenever a new maximum is found
+  rpc RunningMax (stream subdir.IntegerMessage) returns (stream subdir.IntegerMessage);
+
+  // Accept a stream of integers, and report the maximum every second
+  rpc PeriodicMax (stream subdir.IntegerMessage) returns (stream subdir.IntegerMessage);
+}
