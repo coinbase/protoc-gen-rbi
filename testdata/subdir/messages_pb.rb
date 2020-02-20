@@ -36,13 +36,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :nested_value, :message, 18, "testdata.subdir.IntegerMessage"
       repeated :repeated_nested_value, :message, 19, "testdata.subdir.IntegerMessage"
       repeated :repeated_int32_value, :int32, 20
-      optional :inner_value, :message, 21, "testdata.subdir.AllTypes.InnerMessage"
-      optional :inner_nested_value, :message, 22, "testdata.subdir.IntegerMessage.InnerNestedMessage"
-      map :string_map_value, :string, :message, 25, "testdata.subdir.IntegerMessage"
-      map :int32_map_value, :int32, :message, 26, "testdata.subdir.IntegerMessage"
+      repeated :repeated_enum, :enum, 21, "testdata.subdir.AllTypes.Corpus"
+      optional :inner_value, :message, 22, "testdata.subdir.AllTypes.InnerMessage"
+      optional :inner_nested_value, :message, 23, "testdata.subdir.IntegerMessage.InnerNestedMessage"
+      map :string_map_value, :string, :message, 26, "testdata.subdir.IntegerMessage"
+      map :int32_map_value, :int32, :message, 27, "testdata.subdir.IntegerMessage"
+      map :enum_map_value, :string, :enum, 28, "testdata.subdir.AllTypes.Corpus"
       oneof :test_oneof do
-        optional :name, :string, 23
-        optional :sub_message, :bool, 24
+        optional :name, :string, 24
+        optional :sub_message, :bool, 25
       end
     end
     add_message "testdata.subdir.AllTypes.InnerMessage" do

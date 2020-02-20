@@ -55,19 +55,21 @@ message AllTypes {
   IntegerMessage nested_value = 18;
   repeated IntegerMessage repeated_nested_value = 19;
   repeated int32 repeated_int32_value = 20;
+  repeated Corpus repeated_enum = 21;
 
   message InnerMessage {
     string value = 1;
   }
-  InnerMessage inner_value = 21;
+  InnerMessage inner_value = 22;
 
-  IntegerMessage.InnerNestedMessage inner_nested_value = 22;
+  IntegerMessage.InnerNestedMessage inner_nested_value = 23;
 
   oneof test_oneof {
-    string name = 23;
-    bool sub_message = 24;
+    string name = 24;
+    bool sub_message = 25;
   }
 
-  map<string, IntegerMessage> string_map_value = 25;
-  map<int32, IntegerMessage> int32_map_value = 26;
+  map<string, IntegerMessage> string_map_value = 26;
+  map<int32, IntegerMessage> int32_map_value = 27;
+  map<string, Corpus> enum_map_value = 28;
 }
