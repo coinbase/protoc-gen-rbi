@@ -54,17 +54,19 @@ class Testdata::Subdir::AllTypes
       bool_value: T::Boolean,
       string_value: String,
       bytes_value: String,
-      enum_value: Symbol,
-      alias_enum_value: Symbol,
+      enum_value: T.any(Symbol, Integer),
+      alias_enum_value: T.any(Symbol, Integer),
       nested_value: T.nilable(Testdata::Subdir::IntegerMessage),
       repeated_nested_value: T::Array[T.nilable(Testdata::Subdir::IntegerMessage)],
       repeated_int32_value: T::Array[Integer],
+      repeated_enum: T::Array[T.any(Symbol, Integer)],
       inner_value: T.nilable(Testdata::Subdir::AllTypes::InnerMessage),
       inner_nested_value: T.nilable(Testdata::Subdir::IntegerMessage::InnerNestedMessage),
       name: String,
       sub_message: T::Boolean,
-      string_map_value: Google::Protobuf::Map,
-      int32_map_value: Google::Protobuf::Map
+      string_map_value: T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)],
+      int32_map_value: T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)],
+      enum_map_value: T::Hash[String, T.any(Symbol, Integer)]
     ).void
   end
   def initialize(
@@ -88,12 +90,14 @@ class Testdata::Subdir::AllTypes
     nested_value: nil,
     repeated_nested_value: [],
     repeated_int32_value: [],
+    repeated_enum: [],
     inner_value: nil,
     inner_nested_value: nil,
     name: "",
     sub_message: false,
     string_map_value: Google::Protobuf::Map.new(:string, :message, Testdata::Subdir::IntegerMessage),
-    int32_map_value: Google::Protobuf::Map.new(:int32, :message, Testdata::Subdir::IntegerMessage)
+    int32_map_value: Google::Protobuf::Map.new(:int32, :message, Testdata::Subdir::IntegerMessage),
+    enum_map_value: Google::Protobuf::Map.new(:string, :enum)
   )
   end
 
@@ -221,7 +225,7 @@ class Testdata::Subdir::AllTypes
   def enum_value
   end
 
-  sig { params(value: Symbol).void }
+  sig { params(value: T.any(Symbol, Integer)).void }
   def enum_value=(value)
   end
 
@@ -229,7 +233,7 @@ class Testdata::Subdir::AllTypes
   def alias_enum_value
   end
 
-  sig { params(value: Symbol).void }
+  sig { params(value: T.any(Symbol, Integer)).void }
   def alias_enum_value=(value)
   end
 
@@ -255,6 +259,14 @@ class Testdata::Subdir::AllTypes
 
   sig { params(value: T::Array[Integer]).void }
   def repeated_int32_value=(value)
+  end
+
+  sig { returns(T::Array[Symbol]) }
+  def repeated_enum
+  end
+
+  sig { params(value: T::Array[T.any(Symbol, Integer)]).void }
+  def repeated_enum=(value)
   end
 
   sig { returns(T.nilable(Testdata::Subdir::AllTypes::InnerMessage)) }
@@ -303,6 +315,14 @@ class Testdata::Subdir::AllTypes
 
   sig { params(value: Google::Protobuf::Map).void }
   def int32_map_value=(value)
+  end
+
+  sig { returns(T::Hash[String, Symbol]) }
+  def enum_map_value
+  end
+
+  sig { params(value: Google::Protobuf::Map).void }
+  def enum_map_value=(value)
   end
 end
 
@@ -365,10 +385,18 @@ module Testdata::Subdir::AllTypes::Corpus
   NEWS = T.let(4, Integer)
   PRODUCTS = T.let(5, Integer)
   VIDEO = T.let(6, Integer)
+
+  sig { params(value: Integer).returns(Symbol) }
+  def lookup(value)
+  end
 end
 
 module Testdata::Subdir::AllTypes::EnumAllowingAlias
   UNKNOWN = T.let(0, Integer)
   STARTED = T.let(1, Integer)
   RUNNING = T.let(1, Integer)
+
+  sig { params(value: Integer).returns(Symbol) }
+  def lookup(value)
+  end
 end
