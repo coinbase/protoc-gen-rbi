@@ -387,7 +387,7 @@ module Testdata::Subdir::AllTypes::Corpus
   VIDEO = T.let(6, Integer)
 
   sig { params(value: Integer).returns(Symbol) }
-  def lookup(value)
+  def self.lookup(value)
   end
 end
 
@@ -397,6 +397,6 @@ module Testdata::Subdir::AllTypes::EnumAllowingAlias
   RUNNING = T.let(1, Integer)
 
   sig { params(value: Integer).returns(Symbol) }
-  def lookup(value)
+  def self.lookup(value)
   end
 end

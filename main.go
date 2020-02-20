@@ -116,7 +116,7 @@ module {{ rubyMessageType . }}{{ range .Values }}
   {{ .Name }} = T.let({{ .Value }}, Integer){{ end }}
 
   sig { params(value: Integer).returns(Symbol) }
-  def lookup(value)
+  def self.lookup(value)
   end
 end
 {{ end }}`
