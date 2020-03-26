@@ -8,8 +8,15 @@ class Example::Request
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
-  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
-  def initialize(args); end
+  sig do
+    params(
+      name: String
+    ).void
+  end
+  def initialize(
+    name: ""
+  )
+  end
 
   sig { returns(String) }
   def name
@@ -24,8 +31,15 @@ class Example::Response
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
-  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
-  def initialize(args); end
+  sig do
+    params(
+      greeting: String
+    ).void
+  end
+  def initialize(
+    greeting: ""
+  )
+  end
 
   sig { returns(String) }
   def greeting

@@ -8,6 +8,7 @@ class Example::Broken_const
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
+  # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
   sig { params(args: T::Hash[T.untyped, T.untyped]).void }
   def initialize(args); end
 

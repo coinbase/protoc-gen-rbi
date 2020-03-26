@@ -8,8 +8,15 @@ class Example::Lowercase
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
-  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
-  def initialize(args); end
+  sig do
+    params(
+      example_proto_field: String
+    ).void
+  end
+  def initialize(
+    example_proto_field: ""
+  )
+  end
 
   sig { returns(String) }
   def example_proto_field

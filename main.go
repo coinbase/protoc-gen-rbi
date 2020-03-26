@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	likeRubyConstant = regexp.MustCompile("[a-z][A-Za-z0-9_]*")
+	goodRubyField = regexp.MustCompile(`\A[a-z][A-Za-z0-9_]*\z`)
 )
 
 type rbiModule struct {
@@ -81,7 +81,8 @@ func (m *rbiModule) increment(i int) int {
 
 func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
 	for _, field := range fields {
-		if likeRubyConstant.MatchString(string(field.Name())) {
+		if !goodRubyField.MatchString(string(field.Name())) {
+			log.Printf("%+v doesn't look good!", string(field.Name()))
 			return true
 		}
 	}
