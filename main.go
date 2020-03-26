@@ -130,7 +130,7 @@ module {{ rubyPackage .File }}::{{ .Name }}
     include GRPC::GenericService
   end
 
-  class Stub
+  class Stub < GRPC::ClientStub
     sig do
       params(
         host: String,
