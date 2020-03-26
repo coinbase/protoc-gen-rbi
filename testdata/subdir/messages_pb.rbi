@@ -9,15 +9,8 @@ class Testdata::Subdir::IntegerMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
-  sig do
-    params(
-      value: Integer
-    ).void
-  end
-  def initialize(
-    value: 0
-  )
-  end
+  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
+  def initialize(args); end
 
   sig { returns(Integer) }
   def value
@@ -37,69 +30,8 @@ class Testdata::Subdir::AllTypes
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
-  sig do
-    params(
-      double_value: Float,
-      float_value: Float,
-      int32_value: Integer,
-      int64_value: Integer,
-      uint32_value: Integer,
-      uint64_value: Integer,
-      sint32_value: Integer,
-      sint64_value: Integer,
-      fixed32_value: Integer,
-      fixed64_value: Integer,
-      sfixed32_value: Integer,
-      sfixed64_value: Integer,
-      bool_value: T::Boolean,
-      string_value: String,
-      bytes_value: String,
-      enum_value: T.any(Symbol, Integer),
-      alias_enum_value: T.any(Symbol, Integer),
-      nested_value: T.nilable(Testdata::Subdir::IntegerMessage),
-      repeated_nested_value: T::Array[T.nilable(Testdata::Subdir::IntegerMessage)],
-      repeated_int32_value: T::Array[Integer],
-      repeated_enum: T::Array[T.any(Symbol, Integer)],
-      inner_value: T.nilable(Testdata::Subdir::AllTypes::InnerMessage),
-      inner_nested_value: T.nilable(Testdata::Subdir::IntegerMessage::InnerNestedMessage),
-      name: String,
-      sub_message: T::Boolean,
-      string_map_value: T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)],
-      int32_map_value: T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)],
-      enum_map_value: T::Hash[String, T.any(Symbol, Integer)]
-    ).void
-  end
-  def initialize(
-    double_value: 0.0,
-    float_value: 0.0,
-    int32_value: 0,
-    int64_value: 0,
-    uint32_value: 0,
-    uint64_value: 0,
-    sint32_value: 0,
-    sint64_value: 0,
-    fixed32_value: 0,
-    fixed64_value: 0,
-    sfixed32_value: 0,
-    sfixed64_value: 0,
-    bool_value: false,
-    string_value: "",
-    bytes_value: "",
-    enum_value: :UNIVERSAL,
-    alias_enum_value: :UNKNOWN,
-    nested_value: nil,
-    repeated_nested_value: [],
-    repeated_int32_value: [],
-    repeated_enum: [],
-    inner_value: nil,
-    inner_nested_value: nil,
-    name: "",
-    sub_message: false,
-    string_map_value: Google::Protobuf::Map.new(:string, :message, Testdata::Subdir::IntegerMessage),
-    int32_map_value: Google::Protobuf::Map.new(:int32, :message, Testdata::Subdir::IntegerMessage),
-    enum_map_value: Google::Protobuf::Map.new(:string, :enum)
-  )
-  end
+  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
+  def initialize(args); end
 
   sig { returns(Float) }
   def double_value
@@ -330,15 +262,8 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
-  sig do
-    params(
-      value: Float
-    ).void
-  end
-  def initialize(
-    value: 0.0
-  )
-  end
+  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
+  def initialize(args); end
 
   sig { returns(Float) }
   def value
@@ -358,15 +283,8 @@ class Testdata::Subdir::AllTypes::InnerMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
-  sig do
-    params(
-      value: String
-    ).void
-  end
-  def initialize(
-    value: ""
-  )
-  end
+  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
+  def initialize(args); end
 
   sig { returns(String) }
   def value

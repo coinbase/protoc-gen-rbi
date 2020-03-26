@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package example;
+
+message broken_const {
+  string name = 1;
+  string Constant_1 = 2;
+}
