@@ -26,3 +26,26 @@ class Example::Lowercase
   def example_proto_field=(value)
   end
 end
+
+class Example::Lowercase_with_underscores
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+
+  sig do
+    params(
+      example_proto_field: String
+    ).void
+  end
+  def initialize(
+    example_proto_field: ""
+  )
+  end
+
+  sig { returns(String) }
+  def example_proto_field
+  end
+
+  sig { params(value: String).void }
+  def example_proto_field=(value)
+  end
+end

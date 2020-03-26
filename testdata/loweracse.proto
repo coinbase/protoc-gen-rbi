@@ -5,3 +5,7 @@ package example;
 message lowercase {
   string example_proto_field = 1;
 }
+
+message lowercase_with_underscores {
+  string example_proto_field = 1;
+}
