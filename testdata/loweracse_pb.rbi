@@ -4,7 +4,7 @@
 
 module Example; end
 
-class Example::lowercase
+class Example::Lowercase
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 

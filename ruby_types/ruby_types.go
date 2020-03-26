@@ -2,12 +2,14 @@ package ruby_types
 
 import (
 	"fmt"
-	pgs "github.com/lyft/protoc-gen-star"
 	"log"
 	"strings"
+
+	pgs "github.com/lyft/protoc-gen-star"
 )
 
 type methodType int
+
 const (
 	methodTypeGetter methodType = iota
 	methodTypeSetter
@@ -55,7 +57,8 @@ func RubyMessageType(entity EntityWithParent) string {
 	outer := entity
 	ok := true
 	for ok {
-		names = append([]string{outer.Name().String()}, names...)
+		name := outer.Name().String()
+		names = append([]string{strings.Title(name)}, names...)
 		outer, ok = outer.Parent().(pgs.Message)
 	}
 	return fmt.Sprintf("%s::%s", RubyPackage(entity.File()), strings.Join(names, "::"))
