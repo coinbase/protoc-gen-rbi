@@ -7,7 +7,7 @@ module Testdata::SimpleMathematics
     include GRPC::GenericService
   end
 
-  class Stub
+  class Stub < GRPC::ClientStub
     sig do
       params(
         host: String,
@@ -41,7 +41,7 @@ module Testdata::ComplexMathematics
     include GRPC::GenericService
   end
 
-  class Stub
+  class Stub < GRPC::ClientStub
     sig do
       params(
         host: String,
