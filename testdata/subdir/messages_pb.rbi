@@ -9,6 +9,22 @@ class Testdata::Subdir::IntegerMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
+  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::IntegerMessage).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::IntegerMessage).returns(String) }
+  def self.encode_json(msg)
+  end
+
   sig do
     params(
       value: Integer
@@ -31,11 +47,43 @@ end
 class Testdata::Subdir::Empty
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+
+  sig { params(str: String).returns(Testdata::Subdir::Empty) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::Empty).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Testdata::Subdir::Empty) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::Empty).returns(String) }
+  def self.encode_json(msg)
+  end
 end
 
 class Testdata::Subdir::AllTypes
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+
+  sig { params(str: String).returns(Testdata::Subdir::AllTypes) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::AllTypes).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Testdata::Subdir::AllTypes) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::AllTypes).returns(String) }
+  def self.encode_json(msg)
+  end
 
   sig do
     params(
@@ -330,6 +378,22 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
+  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::IntegerMessage::InnerNestedMessage).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::IntegerMessage::InnerNestedMessage).returns(String) }
+  def self.encode_json(msg)
+  end
+
   sig do
     params(
       value: Float
@@ -352,11 +416,43 @@ end
 class Testdata::Subdir::IntegerMessage::NestedEmpty
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+
+  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::IntegerMessage::NestedEmpty).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::IntegerMessage::NestedEmpty).returns(String) }
+  def self.encode_json(msg)
+  end
 end
 
 class Testdata::Subdir::AllTypes::InnerMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+
+  sig { params(str: String).returns(Testdata::Subdir::AllTypes::InnerMessage) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::AllTypes::InnerMessage).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Testdata::Subdir::AllTypes::InnerMessage) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Testdata::Subdir::AllTypes::InnerMessage).returns(String) }
+  def self.encode_json(msg)
+  end
 
   sig do
     params(
@@ -386,8 +482,12 @@ module Testdata::Subdir::AllTypes::Corpus
   PRODUCTS = T.let(5, Integer)
   VIDEO = T.let(6, Integer)
 
-  sig { params(value: Integer).returns(Symbol) }
+  sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)
+  end
+
+  sig { params(value: Symbol).returns(T.nilable(Integer)) }
+  def self.resolve(value)
   end
 end
 
@@ -396,7 +496,11 @@ module Testdata::Subdir::AllTypes::EnumAllowingAlias
   STARTED = T.let(1, Integer)
   RUNNING = T.let(1, Integer)
 
-  sig { params(value: Integer).returns(Symbol) }
+  sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)
+  end
+
+  sig { params(value: Symbol).returns(T.nilable(Integer)) }
+  def self.resolve(value)
   end
 end
