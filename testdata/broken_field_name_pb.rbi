@@ -4,7 +4,7 @@
 
 module Example; end
 
-class Example::Broken_field_name
+class Example::broken_field_name
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
