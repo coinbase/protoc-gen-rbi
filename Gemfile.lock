@@ -1,19 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    google-protobuf (3.11.4)
     grpc-tools (1.25.0)
-    sorbet (0.5.5469)
-      sorbet-static (= 0.5.5469)
-    sorbet-static (0.5.5469-universal-darwin-14)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  google-protobuf
   grpc-tools
-  sorbet
 
 BUNDLED WITH
    2.0.2
