@@ -8,6 +8,22 @@ class Example::Request
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
+  sig { params(str: String).returns(Example::Request) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Request).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Example::Request) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Example::Request).returns(String) }
+  def self.encode_json(msg)
+  end
+
   sig do
     params(
       name: String
@@ -30,6 +46,22 @@ end
 class Example::Response
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+
+  sig { params(str: String).returns(Example::Response) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Response).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Example::Response) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Example::Response).returns(String) }
+  def self.encode_json(msg)
+  end
 
   sig do
     params(

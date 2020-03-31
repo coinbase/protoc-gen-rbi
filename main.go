@@ -107,6 +107,22 @@ module {{ . }}; end{{ end }}
 class {{ rubyMessageType . }}
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+
+  sig { params(str: String).returns({{ rubyMessageType . }}) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: {{ rubyMessageType . }}).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns({{ rubyMessageType . }}) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: {{ rubyMessageType . }}).returns(String) }
+  def self.encode_json(msg)
+  end
 {{ if willGenerateInvalidRuby .Fields }}
   # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
   sig { params(args: T::Hash[T.untyped, T.untyped]).void }
@@ -134,8 +150,12 @@ class {{ rubyMessageType . }}
 module {{ rubyMessageType . }}{{ range .Values }}
   {{ .Name }} = T.let({{ .Value }}, Integer){{ end }}
 
-  sig { params(value: Integer).returns(Symbol) }
+  sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)
+  end
+
+  sig { params(value: Symbol).returns(T.nilable(Integer)) }
+  def self.resolve(value)
   end
 end
 {{ end }}`
