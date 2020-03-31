@@ -8,6 +8,22 @@ class Example::Lowercase
   include Google::Protobuf
   include Google::Protobuf::MessageExts
 
+  sig { params(str: String).returns(Example::Lowercase) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Lowercase).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Example::Lowercase) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Example::Lowercase).returns(String) }
+  def self.encode_json(msg)
+  end
+
   sig do
     params(
       example_proto_field: String
@@ -30,6 +46,22 @@ end
 class Example::Lowercase_with_underscores
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+
+  sig { params(str: String).returns(Example::Lowercase_with_underscores) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Lowercase_with_underscores).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String).returns(Example::Lowercase_with_underscores) }
+  def self.decode_json(str)
+  end
+
+  sig { params(msg: Example::Lowercase_with_underscores).returns(String) }
+  def self.encode_json(msg)
+  end
 
   sig do
     params(
