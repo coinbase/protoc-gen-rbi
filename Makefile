@@ -2,7 +2,10 @@ init:
 	bundle install
 
 install:
-	go install .
+	go install -mod=vendor .
+
+vendor:
+	go mod vendor
 
 test: init install
 	$(eval PROTOS := $(shell cd testdata && find . -name "*.proto" | sed 's|^./||'))
