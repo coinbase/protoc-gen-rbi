@@ -54,19 +54,19 @@ class Testdata::Subdir::AllTypes
       bool_value: T::Boolean,
       string_value: String,
       bytes_value: String,
-      enum_value: T.any(Symbol, Integer),
-      alias_enum_value: T.any(Symbol, Integer),
+      enum_value: T.any(Symbol, String, Integer),
+      alias_enum_value: T.any(Symbol, String, Integer),
       nested_value: T.nilable(Testdata::Subdir::IntegerMessage),
       repeated_nested_value: T::Array[T.nilable(Testdata::Subdir::IntegerMessage)],
       repeated_int32_value: T::Array[Integer],
-      repeated_enum: T::Array[T.any(Symbol, Integer)],
+      repeated_enum: T::Array[T.any(Symbol, String, Integer)],
       inner_value: T.nilable(Testdata::Subdir::AllTypes::InnerMessage),
       inner_nested_value: T.nilable(Testdata::Subdir::IntegerMessage::InnerNestedMessage),
       name: String,
       sub_message: T::Boolean,
       string_map_value: T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)],
       int32_map_value: T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)],
-      enum_map_value: T::Hash[String, T.any(Symbol, Integer)]
+      enum_map_value: T::Hash[String, T.any(Symbol, String, Integer)]
     ).void
   end
   def initialize(
@@ -225,7 +225,7 @@ class Testdata::Subdir::AllTypes
   def enum_value
   end
 
-  sig { params(value: T.any(Symbol, Integer)).void }
+  sig { params(value: T.any(Symbol, String, Integer)).void }
   def enum_value=(value)
   end
 
@@ -233,7 +233,7 @@ class Testdata::Subdir::AllTypes
   def alias_enum_value
   end
 
-  sig { params(value: T.any(Symbol, Integer)).void }
+  sig { params(value: T.any(Symbol, String, Integer)).void }
   def alias_enum_value=(value)
   end
 
@@ -265,7 +265,7 @@ class Testdata::Subdir::AllTypes
   def repeated_enum
   end
 
-  sig { params(value: T::Array[T.any(Symbol, Integer)]).void }
+  sig { params(value: T::Array[T.any(Symbol, String, Integer)]).void }
   def repeated_enum=(value)
   end
 
