@@ -2,13 +2,12 @@ init:
 	bundle install
 
 install:
-	go install .
+	go install -mod=vendor .
 
 vendor:
 	go mod vendor
 
 test: init install
-	go mod verify
 	$(eval PROTOS := $(shell cd testdata && find . -name "*.proto" | sed 's|^./||'))
 	$(eval GRPC_TOOLS_LOCATION := $(shell bundle show grpc-tools))
 	$(eval PROTOC_BINARY := $(GRPC_TOOLS_LOCATION)/bin/grpc_tools_ruby_protoc)
