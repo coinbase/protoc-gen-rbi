@@ -4,6 +4,9 @@ init:
 install:
 	go install .
 
+vendor:
+	go mod vendor
+
 test: init install
 	$(eval PROTOS := $(shell cd testdata && find . -name "*.proto" | sed 's|^./||'))
 	$(eval GRPC_TOOLS_LOCATION := $(shell bundle show grpc-tools))
