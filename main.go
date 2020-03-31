@@ -135,7 +135,7 @@ module {{ rubyPackage .File }}::{{ .Name }}
       params(
         host: String,
         creds: T.any(GRPC::Core::ChannelCredentials, Symbol),
-        kw: T::Hash[Symbol, T.untyped]
+        kw: T.untyped,
       ).void
     end
     def initialize(host, creds, **kw)
