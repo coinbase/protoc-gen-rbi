@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"regexp"
 	"strings"
 	"text/template"
 
@@ -11,10 +12,14 @@ import (
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 )
 
+var (
+	validRubyField = regexp.MustCompile(`\A[a-z][A-Za-z0-9_]*\z`)
+)
+
 type rbiModule struct {
 	*pgs.ModuleBase
-	ctx pgsgo.Context
-	tpl *template.Template
+	ctx        pgsgo.Context
+	tpl        *template.Template
 	serviceTpl *template.Template
 }
 
@@ -25,16 +30,17 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 	m.ctx = pgsgo.InitContext(c.Parameters())
 
 	funcs := map[string]interface{}{
-		"increment": m.increment,
-		"rubyModules": ruby_types.RubyModules,
-		"rubyPackage": ruby_types.RubyPackage,
-		"rubyMessageType": ruby_types.RubyMessageType,
-		"rubyGetterFieldType": ruby_types.RubyGetterFieldType,
-		"rubySetterFieldType": ruby_types.RubySetterFieldType,
+		"increment":                m.increment,
+		"willGenerateInvalidRuby":  m.willGenerateInvalidRuby,
+		"rubyModules":              ruby_types.RubyModules,
+		"rubyPackage":              ruby_types.RubyPackage,
+		"rubyMessageType":          ruby_types.RubyMessageType,
+		"rubyGetterFieldType":      ruby_types.RubyGetterFieldType,
+		"rubySetterFieldType":      ruby_types.RubySetterFieldType,
 		"rubyInitializerFieldType": ruby_types.RubyInitializerFieldType,
-		"rubyFieldValue": ruby_types.RubyFieldValue,
-		"rubyMethodParamType": ruby_types.RubyMethodParamType,
-		"rubyMethodReturnType": ruby_types.RubyMethodReturnType,
+		"rubyFieldValue":           ruby_types.RubyFieldValue,
+		"rubyMethodParamType":      ruby_types.RubyMethodParamType,
+		"rubyMethodReturnType":     ruby_types.RubyMethodReturnType,
 	}
 
 	m.tpl = template.Must(template.New("rbi").Funcs(funcs).Parse(tpl))
@@ -73,6 +79,15 @@ func (m *rbiModule) increment(i int) int {
 	return i + 1
 }
 
+func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
+	for _, field := range fields {
+		if !validRubyField.MatchString(string(field.Name())) {
+			return true
+		}
+	}
+	return false
+}
+
 func main() {
 	pgs.Init(
 		pgs.DebugEnv("DEBUG"),
@@ -92,7 +107,11 @@ module {{ . }}; end{{ end }}
 class {{ rubyMessageType . }}
   include Google::Protobuf
   include Google::Protobuf::MessageExts
-{{ if gt (len .Fields) 0 }}
+{{ if willGenerateInvalidRuby .Fields }}
+  # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
+  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
+  def initialize(args); end
+{{ else if gt (len .Fields) 0 }}
   sig do
     params({{ $index := 0 }}{{ range .Fields }}{{ if gt $index 0 }},{{ end }}{{ $index = increment $index }}
       {{ .Name }}: {{ rubyInitializerFieldType . }}{{ end }}

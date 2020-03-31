@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package example;
+
+message broken_field_name {
+  string name = 1;
+  string Field_name_1 = 2;
+}
