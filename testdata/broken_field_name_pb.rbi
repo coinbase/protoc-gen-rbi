@@ -43,4 +43,8 @@ class Example::Broken_field_name
   sig { params(value: String).void }
   def Field_name_1=(value)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
 end

@@ -42,6 +42,10 @@ class Testdata::Subdir::IntegerMessage
   sig { params(value: Integer).void }
   def value=(value)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
 end
 
 class Testdata::Subdir::Empty
@@ -62,6 +66,10 @@ class Testdata::Subdir::Empty
 
   sig { params(msg: Testdata::Subdir::Empty).returns(String) }
   def self.encode_json(msg)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
   end
 end
 
@@ -372,6 +380,10 @@ class Testdata::Subdir::AllTypes
   sig { params(value: Google::Protobuf::Map).void }
   def enum_map_value=(value)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
 end
 
 class Testdata::Subdir::IntegerMessage::InnerNestedMessage
@@ -411,6 +423,10 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   sig { params(value: Float).void }
   def value=(value)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
 end
 
 class Testdata::Subdir::IntegerMessage::NestedEmpty
@@ -431,6 +447,10 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
 
   sig { params(msg: Testdata::Subdir::IntegerMessage::NestedEmpty).returns(String) }
   def self.encode_json(msg)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
   end
 end
 
@@ -470,6 +490,10 @@ class Testdata::Subdir::AllTypes::InnerMessage
 
   sig { params(value: String).void }
   def value=(value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
   end
 end
 

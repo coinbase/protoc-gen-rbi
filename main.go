@@ -145,7 +145,11 @@ class {{ rubyMessageType . }}
   sig { params(value: {{ rubySetterFieldType . }}).void }
   def {{ .Name }}=(value)
   end
-{{ end }}end
+{{ end }}
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
 {{ end }}{{ range .AllEnums }}
 module {{ rubyMessageType . }}{{ range .Values }}
   {{ .Name }} = T.let({{ .Value }}, Integer){{ end }}

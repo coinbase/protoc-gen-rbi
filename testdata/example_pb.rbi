@@ -41,6 +41,10 @@ class Example::Request
   sig { params(value: String).void }
   def name=(value)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
 end
 
 class Example::Response
@@ -79,5 +83,9 @@ class Example::Response
 
   sig { params(value: String).void }
   def greeting=(value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
   end
 end
