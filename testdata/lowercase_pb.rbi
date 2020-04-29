@@ -24,6 +24,11 @@ class Example::Lowercase
   def self.encode_json(msg)
   end
 
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
+
   sig do
     params(
       example_proto_field: String
@@ -62,6 +67,11 @@ class Example::Lowercase_with_underscores
   sig { params(msg: Example::Lowercase_with_underscores).returns(String) }
   def self.encode_json(msg)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
 
   sig do
     params(

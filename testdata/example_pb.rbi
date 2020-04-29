@@ -24,6 +24,11 @@ class Example::Request
   def self.encode_json(msg)
   end
 
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
+
   sig do
     params(
       name: String
@@ -62,6 +67,11 @@ class Example::Response
   sig { params(msg: Example::Response).returns(String) }
   def self.encode_json(msg)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
 
   sig do
     params(

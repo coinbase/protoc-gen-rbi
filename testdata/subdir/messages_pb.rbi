@@ -25,6 +25,11 @@ class Testdata::Subdir::IntegerMessage
   def self.encode_json(msg)
   end
 
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
+
   sig do
     params(
       value: Integer
@@ -63,6 +68,11 @@ class Testdata::Subdir::Empty
   sig { params(msg: Testdata::Subdir::Empty).returns(String) }
   def self.encode_json(msg)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
 end
 
 class Testdata::Subdir::AllTypes
@@ -84,6 +94,11 @@ class Testdata::Subdir::AllTypes
   sig { params(msg: Testdata::Subdir::AllTypes).returns(String) }
   def self.encode_json(msg)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
 
   sig do
     params(
@@ -394,6 +409,11 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   def self.encode_json(msg)
   end
 
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
+
   sig do
     params(
       value: Float
@@ -432,6 +452,11 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
   sig { params(msg: Testdata::Subdir::IntegerMessage::NestedEmpty).returns(String) }
   def self.encode_json(msg)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
 end
 
 class Testdata::Subdir::AllTypes::InnerMessage
@@ -453,6 +478,11 @@ class Testdata::Subdir::AllTypes::InnerMessage
   sig { params(msg: Testdata::Subdir::AllTypes::InnerMessage).returns(String) }
   def self.encode_json(msg)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
 
   sig do
     params(
