@@ -25,11 +25,6 @@ class Testdata::Subdir::IntegerMessage
   def self.encode_json(msg)
   end
 
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-
-
   sig do
     params(
       value: Integer
@@ -46,6 +41,10 @@ class Testdata::Subdir::IntegerMessage
 
   sig { params(value: Integer).void }
   def value=(value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
   end
 end
 
@@ -72,7 +71,6 @@ class Testdata::Subdir::Empty
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
-
 end
 
 class Testdata::Subdir::AllTypes
@@ -94,11 +92,6 @@ class Testdata::Subdir::AllTypes
   sig { params(msg: Testdata::Subdir::AllTypes).returns(String) }
   def self.encode_json(msg)
   end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-
 
   sig do
     params(
@@ -387,6 +380,10 @@ class Testdata::Subdir::AllTypes
   sig { params(value: Google::Protobuf::Map).void }
   def enum_map_value=(value)
   end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
 end
 
 class Testdata::Subdir::IntegerMessage::InnerNestedMessage
@@ -409,11 +406,6 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   def self.encode_json(msg)
   end
 
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-
-
   sig do
     params(
       value: Float
@@ -430,6 +422,10 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
 
   sig { params(value: Float).void }
   def value=(value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
   end
 end
 
@@ -456,7 +452,6 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
-
 end
 
 class Testdata::Subdir::AllTypes::InnerMessage
@@ -479,11 +474,6 @@ class Testdata::Subdir::AllTypes::InnerMessage
   def self.encode_json(msg)
   end
 
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-
-
   sig do
     params(
       value: String
@@ -500,6 +490,10 @@ class Testdata::Subdir::AllTypes::InnerMessage
 
   sig { params(value: String).void }
   def value=(value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
   end
 end
 

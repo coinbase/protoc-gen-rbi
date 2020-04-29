@@ -24,11 +24,6 @@ class Example::Broken_field_name
   def self.encode_json(msg)
   end
 
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-
-
   # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
   sig { params(args: T::Hash[T.untyped, T.untyped]).void }
   def initialize(args); end
@@ -47,5 +42,9 @@ class Example::Broken_field_name
 
   sig { params(value: String).void }
   def Field_name_1=(value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
   end
 end

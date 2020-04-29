@@ -123,11 +123,6 @@ class {{ rubyMessageType . }}
   sig { params(msg: {{ rubyMessageType . }}).returns(String) }
   def self.encode_json(msg)
   end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-
 {{ if willGenerateInvalidRuby .Fields }}
   # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
   sig { params(args: T::Hash[T.untyped, T.untyped]).void }
@@ -150,7 +145,11 @@ class {{ rubyMessageType . }}
   sig { params(value: {{ rubySetterFieldType . }}).void }
   def {{ .Name }}=(value)
   end
-{{ end }}end
+{{ end }}
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
 {{ end }}{{ range .AllEnums }}
 module {{ rubyMessageType . }}{{ range .Values }}
   {{ .Name }} = T.let({{ .Value }}, Integer){{ end }}
