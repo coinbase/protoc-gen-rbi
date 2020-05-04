@@ -105,9 +105,9 @@ class Testdata::Subdir::AllTypes
       enum_value: T.any(Symbol, String, Integer),
       alias_enum_value: T.any(Symbol, String, Integer),
       nested_value: T.nilable(Testdata::Subdir::IntegerMessage),
-      repeated_nested_value: T::Array[T.nilable(Testdata::Subdir::IntegerMessage)],
-      repeated_int32_value: T::Array[Integer],
-      repeated_enum: T::Array[T.any(Symbol, String, Integer)],
+      repeated_nested_value: T::Enumerable[T.nilable(Testdata::Subdir::IntegerMessage)],
+      repeated_int32_value: T::Enumerable[Integer],
+      repeated_enum: T::Enumerable[T.any(Symbol, String, Integer)],
       inner_value: T.nilable(Testdata::Subdir::AllTypes::InnerMessage),
       inner_nested_value: T.nilable(Testdata::Subdir::IntegerMessage::InnerNestedMessage),
       name: String,
@@ -293,27 +293,27 @@ class Testdata::Subdir::AllTypes
   def nested_value=(value)
   end
 
-  sig { returns(T::Array[T.nilable(Testdata::Subdir::IntegerMessage)]) }
+  sig { returns(T::Enumerable[T.nilable(Testdata::Subdir::IntegerMessage)]) }
   def repeated_nested_value
   end
 
-  sig { params(value: T::Array[T.nilable(Testdata::Subdir::IntegerMessage)]).void }
+  sig { params(value: T::Enumerable[T.nilable(Testdata::Subdir::IntegerMessage)]).void }
   def repeated_nested_value=(value)
   end
 
-  sig { returns(T::Array[Integer]) }
+  sig { returns(T::Enumerable[Integer]) }
   def repeated_int32_value
   end
 
-  sig { params(value: T::Array[Integer]).void }
+  sig { params(value: T::Enumerable[Integer]).void }
   def repeated_int32_value=(value)
   end
 
-  sig { returns(T::Array[Symbol]) }
+  sig { returns(T::Enumerable[Symbol]) }
   def repeated_enum
   end
 
-  sig { params(value: T::Array[T.any(Symbol, String, Integer)]).void }
+  sig { params(value: T::Enumerable[T.any(Symbol, String, Integer)]).void }
   def repeated_enum=(value)
   end
 
