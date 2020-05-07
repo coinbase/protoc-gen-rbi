@@ -87,7 +87,7 @@ func rubyFieldType(field pgs.Field, mt methodType) string {
 		return fmt.Sprintf("T::Hash[%s, %s]", key, value)
 	} else if t.IsRepeated() {
 		value := rubyProtoTypeElem(field, t.Element(), mt)
-		return fmt.Sprintf("T::Array[%s]", value)
+		return fmt.Sprintf("T::Enumerable[%s]", value)
 	}
 	return rubyProtoTypeElem(field, t, mt)
 }
