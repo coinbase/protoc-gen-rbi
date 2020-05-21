@@ -16,12 +16,12 @@ class Example::Lowercase
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Example::Lowercase) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Example::Lowercase) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Example::Lowercase).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Example::Lowercase, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig do
@@ -59,12 +59,12 @@ class Example::Lowercase_with_underscores
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Example::Lowercase_with_underscores) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Example::Lowercase_with_underscores) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Example::Lowercase_with_underscores).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Example::Lowercase_with_underscores, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig do

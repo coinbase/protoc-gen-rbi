@@ -16,12 +16,12 @@ class Example::Request
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Example::Request) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Example::Request) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Example::Request).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Example::Request, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig do
@@ -59,12 +59,12 @@ class Example::Response
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Example::Response) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Example::Response) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Example::Response).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Example::Response, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig do
