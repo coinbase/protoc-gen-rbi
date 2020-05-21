@@ -17,12 +17,12 @@ class Testdata::Subdir::IntegerMessage
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::IntegerMessage) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Testdata::Subdir::IntegerMessage).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Testdata::Subdir::IntegerMessage, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig do
@@ -60,12 +60,12 @@ class Testdata::Subdir::Empty
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Testdata::Subdir::Empty) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::Empty) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Testdata::Subdir::Empty).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Testdata::Subdir::Empty, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
@@ -85,12 +85,12 @@ class Testdata::Subdir::AllTypes
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Testdata::Subdir::AllTypes) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::AllTypes) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Testdata::Subdir::AllTypes).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Testdata::Subdir::AllTypes, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig do
@@ -398,12 +398,12 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Testdata::Subdir::IntegerMessage::InnerNestedMessage).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Testdata::Subdir::IntegerMessage::InnerNestedMessage, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig do
@@ -441,12 +441,12 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Testdata::Subdir::IntegerMessage::NestedEmpty).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Testdata::Subdir::IntegerMessage::NestedEmpty, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
@@ -466,12 +466,12 @@ class Testdata::Subdir::AllTypes::InnerMessage
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns(Testdata::Subdir::AllTypes::InnerMessage) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::AllTypes::InnerMessage) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Testdata::Subdir::AllTypes::InnerMessage).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: Testdata::Subdir::AllTypes::InnerMessage, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 
   sig do

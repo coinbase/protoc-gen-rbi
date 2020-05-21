@@ -116,12 +116,12 @@ class {{ rubyMessageType . }}
   def self.encode(msg)
   end
 
-  sig { params(str: String).returns({{ rubyMessageType . }}) }
-  def self.decode_json(str)
+  sig { params(str: String, kw: T.untyped).returns({{ rubyMessageType . }}) }
+  def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: {{ rubyMessageType . }}).returns(String) }
-  def self.encode_json(msg)
+  sig { params(msg: {{ rubyMessageType . }}, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
   end
 {{ if willGenerateInvalidRuby .Fields }}
   # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
