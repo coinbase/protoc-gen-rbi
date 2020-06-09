@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"text/template"
@@ -66,13 +67,20 @@ func (m *rbiModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Pac
 }
 
 func (m *rbiModule) generate(f pgs.File) {
-	op := "rbi/" + strings.TrimSuffix(f.InputPath().String(), ".proto") + "_pb.rbi"
+	op := rbiFile(f, "_pb.rbi")
 	m.AddGeneratorTemplateFile(op, m.tpl, f)
 }
 
 func (m *rbiModule) generateServices(f pgs.File) {
-	op := "rbi/" + strings.TrimSuffix(f.InputPath().String(), ".proto") + "_services_pb.rbi"
+	op := rbiFile(f, "_services_pb.rbi")
 	m.AddGeneratorTemplateFile(op, m.serviceTpl, f)
+}
+
+func rbiFile(inp pgs.File, newSuffix string) string {
+	f := strings.TrimSuffix(inp.InputPath().String(), ".proto")
+	f += newSuffix
+	dir, base := filepath.Dir(f), filepath.Base(f)
+	return filepath.Join(dir, "rbi", base)
 }
 
 func (m *rbiModule) increment(i int) int {
