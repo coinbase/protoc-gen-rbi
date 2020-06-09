@@ -1,4 +1,4 @@
-module github.com/coinbase/protoc-gen-rbi
+module github.com/bobg/protoc-gen-rbi
 
 go 1.13
 
