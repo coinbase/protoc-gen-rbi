@@ -6,10 +6,10 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/coinbase/protoc-gen-rbi/ruby_types"
-
 	pgs "github.com/lyft/protoc-gen-star"
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
+
+	"github.com/bobg/protoc-gen-rbi/ruby_types"
 )
 
 var (
@@ -66,12 +66,12 @@ func (m *rbiModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Pac
 }
 
 func (m *rbiModule) generate(f pgs.File) {
-	op := strings.TrimSuffix(f.InputPath().String(), ".proto") + "_pb.rbi"
+	op := "rbi/" + strings.TrimSuffix(f.InputPath().String(), ".proto") + "_pb.rbi"
 	m.AddGeneratorTemplateFile(op, m.tpl, f)
 }
 
 func (m *rbiModule) generateServices(f pgs.File) {
-	op := strings.TrimSuffix(f.InputPath().String(), ".proto") + "_services_pb.rbi"
+	op := "rbi/" + strings.TrimSuffix(f.InputPath().String(), ".proto") + "_services_pb.rbi"
 	m.AddGeneratorTemplateFile(op, m.serviceTpl, f)
 }
 
