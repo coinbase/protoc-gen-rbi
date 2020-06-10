@@ -1,7 +1,9 @@
 package main
 
 import (
+	"flag"
 	"log"
+	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -79,8 +81,11 @@ func (m *rbiModule) generateServices(f pgs.File) {
 func rbiFile(inp pgs.File, newSuffix string) string {
 	f := strings.TrimSuffix(inp.InputPath().String(), ".proto")
 	f += newSuffix
-	dir, base := filepath.Dir(f), filepath.Base(f)
-	return filepath.Join(dir, "rbi", base)
+	if subdir != "" {
+		dir, base := filepath.Dir(f), filepath.Base(f)
+		f = filepath.Join(dir, subdir, base)
+	}
+	return f
 }
 
 func (m *rbiModule) increment(i int) int {
@@ -96,7 +101,16 @@ func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
 	return false
 }
 
+var subdir string // place output in this subdir
+
 func main() {
+	fs := flag.NewFlagSet("", flag.ExitOnError) // Avoid using the global flag set, in case pgs.Init or something depends on it.
+	fs.StringVar(&subdir, "subdir", "", "place output in this subdir")
+	err := fs.Parse(os.Args[1:])
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	pgs.Init(
 		pgs.DebugEnv("DEBUG"),
 	).RegisterModule(
