@@ -1,9 +1,7 @@
 package main
 
 import (
-	"flag"
 	"log"
-	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -72,21 +70,22 @@ func (m *rbiModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Pac
 }
 
 func (m *rbiModule) generate(f pgs.File) {
-	op := rbiFile(f, "_pb.rbi")
+	op := m.rbiFile(f, "_pb.rbi")
 	m.AddGeneratorTemplateFile(op, m.tpl, f)
 }
 
 func (m *rbiModule) generateServices(f pgs.File) {
-	op := rbiFile(f, "_services_pb.rbi")
+	op := m.rbiFile(f, "_services_pb.rbi")
 	m.AddGeneratorTemplateFile(op, m.serviceTpl, f)
 }
 
-func rbiFile(inp pgs.File, newSuffix string) string {
+func (m *rbiModule) rbiFile(inp pgs.File, newSuffix string) string {
 	f := strings.TrimSuffix(inp.InputPath().String(), ".proto")
 	f += newSuffix
-	if doSubdir {
+
+	if subdir := m.ctx.Params().Str("subdir"); subdir != "" {
 		dir, base := filepath.Dir(f), filepath.Base(f)
-		f = filepath.Join(dir, "rbi", base)
+		f = filepath.Join(dir, subdir, base)
 	}
 	return f
 }
@@ -107,15 +106,6 @@ func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
 var doSubdir bool
 
 func main() {
-	log.Printf("xxx os.Args is %v", os.Args)
-
-	fs := flag.NewFlagSet("", flag.ExitOnError) // Avoid using the global flag set, in case pgs.Init or something depends on it.
-	fs.BoolVar(&doSubdir, "subdir", false, "place output in the rbi/ subdir")
-	err := fs.Parse(os.Args[1:])
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	pgs.Init(
 		pgs.DebugEnv("DEBUG"),
 	).RegisterModule(
