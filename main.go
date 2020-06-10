@@ -100,8 +100,6 @@ func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
 	return false
 }
 
-var doSubdir bool
-
 func main() {
 	pgs.Init(
 		pgs.DebugEnv("DEBUG"),
