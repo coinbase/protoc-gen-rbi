@@ -10,7 +10,7 @@ import (
 	pgs "github.com/lyft/protoc-gen-star"
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 
-	"github.com/bobg/protoc-gen-rbi/ruby_types"
+	"github.com/coinbase/protoc-gen-rbi/ruby_types"
 )
 
 var (
