@@ -81,9 +81,9 @@ func (m *rbiModule) generateServices(f pgs.File) {
 func rbiFile(inp pgs.File, newSuffix string) string {
 	f := strings.TrimSuffix(inp.InputPath().String(), ".proto")
 	f += newSuffix
-	if subdir != "" {
+	if doSubdir {
 		dir, base := filepath.Dir(f), filepath.Base(f)
-		f = filepath.Join(dir, subdir, base)
+		f = filepath.Join(dir, "rbi", base)
 	}
 	return f
 }
@@ -101,11 +101,11 @@ func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
 	return false
 }
 
-var subdir string // place output in this subdir
+var doSubdir bool
 
 func main() {
 	fs := flag.NewFlagSet("", flag.ExitOnError) // Avoid using the global flag set, in case pgs.Init or something depends on it.
-	fs.StringVar(&subdir, "subdir", "", "place output in this subdir")
+	fs.BoolVar(&doSubdir, "subdir", false, "place output in the rbi/ subdir")
 	err := fs.Parse(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)
