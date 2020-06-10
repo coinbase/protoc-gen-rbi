@@ -7,7 +7,6 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/davecgh/go-spew/spew"
 	pgs "github.com/lyft/protoc-gen-star"
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 
@@ -30,8 +29,6 @@ func RBI() *rbiModule { return &rbiModule{ModuleBase: &pgs.ModuleBase{}} }
 func (m *rbiModule) InitContext(c pgs.BuildContext) {
 	m.ModuleBase.InitContext(c)
 	m.ctx = pgsgo.InitContext(c.Parameters())
-
-	log.Printf("xxx m.ctx is\n%s", spew.Sdump(m.ctx))
 
 	funcs := map[string]interface{}{
 		"increment":                m.increment,
