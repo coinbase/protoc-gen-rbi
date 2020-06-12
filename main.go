@@ -79,10 +79,8 @@ func (m *rbiModule) generateServices(f pgs.File) {
 func (m *rbiModule) rbiFile(inp pgs.File, newSuffix string) string {
 	f := strings.TrimSuffix(inp.InputPath().String(), ".proto")
 	f += newSuffix
-
 	if subdir := m.ctx.Params().Str("subdir"); subdir != "" {
-		dir, base := filepath.Dir(f), filepath.Base(f)
-		f = filepath.Join(dir, subdir, base)
+		f = filepath.Join(subdir, f) // e.g. a/b/c -> subdir/a/b/c
 	}
 	return f
 }
