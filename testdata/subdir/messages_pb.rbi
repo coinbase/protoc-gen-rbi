@@ -27,7 +27,7 @@ class Testdata::Subdir::IntegerMessage
 
   sig do
     params(
-      value: Integer
+      value: T.nilable(Integer)
     ).void
   end
   def initialize(
@@ -95,34 +95,34 @@ class Testdata::Subdir::AllTypes
 
   sig do
     params(
-      double_value: Float,
-      float_value: Float,
-      int32_value: Integer,
-      int64_value: Integer,
-      uint32_value: Integer,
-      uint64_value: Integer,
-      sint32_value: Integer,
-      sint64_value: Integer,
-      fixed32_value: Integer,
-      fixed64_value: Integer,
-      sfixed32_value: Integer,
-      sfixed64_value: Integer,
-      bool_value: T::Boolean,
-      string_value: String,
-      bytes_value: String,
-      enum_value: T.any(Symbol, String, Integer),
-      alias_enum_value: T.any(Symbol, String, Integer),
+      double_value: T.nilable(Float),
+      float_value: T.nilable(Float),
+      int32_value: T.nilable(Integer),
+      int64_value: T.nilable(Integer),
+      uint32_value: T.nilable(Integer),
+      uint64_value: T.nilable(Integer),
+      sint32_value: T.nilable(Integer),
+      sint64_value: T.nilable(Integer),
+      fixed32_value: T.nilable(Integer),
+      fixed64_value: T.nilable(Integer),
+      sfixed32_value: T.nilable(Integer),
+      sfixed64_value: T.nilable(Integer),
+      bool_value: T.nilable(T::Boolean),
+      string_value: T.nilable(String),
+      bytes_value: T.nilable(String),
+      enum_value: T.nilable(T.any(Symbol, String, Integer)),
+      alias_enum_value: T.nilable(T.any(Symbol, String, Integer)),
       nested_value: T.nilable(Testdata::Subdir::IntegerMessage),
-      repeated_nested_value: T::Enumerable[T.nilable(Testdata::Subdir::IntegerMessage)],
-      repeated_int32_value: T::Enumerable[Integer],
-      repeated_enum: T::Enumerable[T.any(Symbol, String, Integer)],
+      repeated_nested_value: T.nilable(T::Enumerable[T.nilable(Testdata::Subdir::IntegerMessage)]),
+      repeated_int32_value: T.nilable(T::Enumerable[Integer]),
+      repeated_enum: T.nilable(T::Enumerable[T.any(Symbol, String, Integer)]),
       inner_value: T.nilable(Testdata::Subdir::AllTypes::InnerMessage),
       inner_nested_value: T.nilable(Testdata::Subdir::IntegerMessage::InnerNestedMessage),
-      name: String,
-      sub_message: T::Boolean,
-      string_map_value: T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)],
-      int32_map_value: T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)],
-      enum_map_value: T::Hash[String, T.any(Symbol, String, Integer)]
+      name: T.nilable(String),
+      sub_message: T.nilable(T::Boolean),
+      string_map_value: T.nilable(T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)]),
+      int32_map_value: T.nilable(T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)]),
+      enum_map_value: T.nilable(T::Hash[String, T.any(Symbol, String, Integer)])
     ).void
   end
   def initialize(
@@ -408,7 +408,7 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
 
   sig do
     params(
-      value: Float
+      value: T.nilable(Float)
     ).void
   end
   def initialize(
@@ -476,7 +476,7 @@ class Testdata::Subdir::AllTypes::InnerMessage
 
   sig do
     params(
-      value: String
+      value: T.nilable(String)
     ).void
   end
   def initialize(

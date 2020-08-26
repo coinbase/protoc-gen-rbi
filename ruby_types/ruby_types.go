@@ -77,19 +77,39 @@ func RubyInitializerFieldType(field pgs.Field) string {
 }
 
 func rubyFieldType(field pgs.Field, mt methodType) string {
+	var rubyType string
+
 	t := field.Type()
+
 	if t.IsMap() {
-		if mt == methodTypeSetter {
-			return "Google::Protobuf::Map"
-		}
-		key := rubyProtoTypeElem(field, t.Key(), mt)
-		value := rubyProtoTypeElem(field, t.Element(), mt)
-		return fmt.Sprintf("T::Hash[%s, %s]", key, value)
+		rubyType = rubyFieldMapType(field, t, mt)
 	} else if t.IsRepeated() {
-		value := rubyProtoTypeElem(field, t.Element(), mt)
-		return fmt.Sprintf("T::Enumerable[%s]", value)
+		rubyType = rubyFieldRepeatedType(field, t, mt)
+	} else {
+		rubyType = rubyProtoTypeElem(field, t, mt)
 	}
-	return rubyProtoTypeElem(field, t, mt)
+
+	// initializer fields can be passed a `nil` value for all field types
+	// messages are already wrapped so we skip those
+	if mt == methodTypeInitializer && (t.IsMap() || t.IsRepeated() || t.ProtoType() != pgs.MessageT) {
+		return fmt.Sprintf("T.nilable(%s)", rubyType)
+	}
+
+	return rubyType
+}
+
+func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
+	if mt == methodTypeSetter {
+		return "Google::Protobuf::Map"
+	}
+	key := rubyProtoTypeElem(field, ft.Key(), mt)
+	value := rubyProtoTypeElem(field, ft.Element(), mt)
+	return fmt.Sprintf("T::Hash[%s, %s]", key, value)
+}
+
+func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
+	value := rubyProtoTypeElem(field, ft.Element(), mt)
+	return fmt.Sprintf("T::Enumerable[%s]", value)
 }
 
 func RubyFieldValue(field pgs.Field) string {
