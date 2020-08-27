@@ -26,7 +26,7 @@ class Example::Request
 
   sig do
     params(
-      name: String
+      name: T.nilable(String)
     ).void
   end
   def initialize(
@@ -69,7 +69,7 @@ class Example::Response
 
   sig do
     params(
-      greeting: String
+      greeting: T.nilable(String)
     ).void
   end
   def initialize(
