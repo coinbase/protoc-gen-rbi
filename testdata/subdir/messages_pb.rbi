@@ -381,6 +381,10 @@ class Testdata::Subdir::AllTypes
   def enum_map_value=(value)
   end
 
+  sig { returns(T.nilable(Symbol)) }
+  def test_oneof
+  end
+
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
