@@ -145,6 +145,10 @@ class {{ rubyMessageType . }}
   sig { params(value: {{ rubySetterFieldType . }}).void }
   def {{ .Name }}=(value)
   end
+{{ end }}{{ range .OneOfs }}
+  sig { returns(T.nilable(Symbol)) }
+  def {{ .Name }}
+  end
 {{ end }}
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
