@@ -24,6 +24,10 @@ class Example::Lowercase
   def self.encode_json(msg, **kw)
   end
 
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
   sig do
     params(
       example_proto_field: T.nilable(String)
@@ -65,6 +69,10 @@ class Example::Lowercase_with_underscores
 
   sig { params(msg: Example::Lowercase_with_underscores, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
   end
 
   sig do
