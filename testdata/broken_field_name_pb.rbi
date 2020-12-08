@@ -24,6 +24,10 @@ class Example::Broken_field_name
   def self.encode_json(msg, **kw)
   end
 
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
   # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
   sig { params(args: T::Hash[T.untyped, T.untyped]).void }
   def initialize(args); end

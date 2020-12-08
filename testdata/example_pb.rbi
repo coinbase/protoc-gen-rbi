@@ -24,6 +24,10 @@ class Example::Request
   def self.encode_json(msg, **kw)
   end
 
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
   sig do
     params(
       name: T.nilable(String)
@@ -65,6 +69,10 @@ class Example::Response
 
   sig { params(msg: Example::Response, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
   end
 
   sig do

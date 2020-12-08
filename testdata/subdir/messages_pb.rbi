@@ -25,6 +25,10 @@ class Testdata::Subdir::IntegerMessage
   def self.encode_json(msg, **kw)
   end
 
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
   sig do
     params(
       value: T.nilable(Integer)
@@ -68,6 +72,10 @@ class Testdata::Subdir::Empty
   def self.encode_json(msg, **kw)
   end
 
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
@@ -91,6 +99,10 @@ class Testdata::Subdir::AllTypes
 
   sig { params(msg: Testdata::Subdir::AllTypes, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
   end
 
   sig do
@@ -410,6 +422,10 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   def self.encode_json(msg, **kw)
   end
 
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
   sig do
     params(
       value: T.nilable(Float)
@@ -453,6 +469,10 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
   def self.encode_json(msg, **kw)
   end
 
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
@@ -476,6 +496,10 @@ class Testdata::Subdir::AllTypes::InnerMessage
 
   sig { params(msg: Testdata::Subdir::AllTypes::InnerMessage, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
   end
 
   sig do
