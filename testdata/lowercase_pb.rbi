@@ -46,6 +46,14 @@ class Example::Lowercase
   def example_proto_field=(value)
   end
 
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
@@ -91,6 +99,14 @@ class Example::Lowercase_with_underscores
 
   sig { params(value: String).void }
   def example_proto_field=(value)
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
   end
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
