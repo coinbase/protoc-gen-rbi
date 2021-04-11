@@ -47,6 +47,14 @@ class Testdata::Subdir::IntegerMessage
   def value=(value)
   end
 
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
@@ -74,6 +82,14 @@ class Testdata::Subdir::Empty
 
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
   end
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
@@ -397,6 +413,14 @@ class Testdata::Subdir::AllTypes
   def test_oneof
   end
 
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
@@ -444,6 +468,14 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   def value=(value)
   end
 
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
@@ -471,6 +503,14 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
 
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
   end
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
@@ -518,6 +558,14 @@ class Testdata::Subdir::AllTypes::InnerMessage
 
   sig { params(value: String).void }
   def value=(value)
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
   end
 
   sig { returns(T::Hash[Symbol, T.untyped]) }

@@ -154,6 +154,14 @@ class {{ rubyMessageType . }}
   def {{ .Name }}
   end
 {{ end }}
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
