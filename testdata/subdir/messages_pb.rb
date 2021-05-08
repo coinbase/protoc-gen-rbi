@@ -69,13 +69,13 @@ end
 
 module Testdata
   module Subdir
-    IntegerMessage = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage").msgclass
-    IntegerMessage::InnerNestedMessage = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage.InnerNestedMessage").msgclass
-    IntegerMessage::NestedEmpty = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage.NestedEmpty").msgclass
-    Empty = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.Empty").msgclass
-    AllTypes = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes").msgclass
-    AllTypes::InnerMessage = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.InnerMessage").msgclass
-    AllTypes::Corpus = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.Corpus").enummodule
-    AllTypes::EnumAllowingAlias = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.EnumAllowingAlias").enummodule
+    IntegerMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage").msgclass
+    IntegerMessage::InnerNestedMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage.InnerNestedMessage").msgclass
+    IntegerMessage::NestedEmpty = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage.NestedEmpty").msgclass
+    Empty = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.Empty").msgclass
+    AllTypes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes").msgclass
+    AllTypes::InnerMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.InnerMessage").msgclass
+    AllTypes::Corpus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.Corpus").enummodule
+    AllTypes::EnumAllowingAlias = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.EnumAllowingAlias").enummodule
   end
 end

@@ -15,6 +15,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module Example
-  Request = Google::Protobuf::DescriptorPool.generated_pool.lookup("example.Request").msgclass
-  Response = Google::Protobuf::DescriptorPool.generated_pool.lookup("example.Response").msgclass
+  Request = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("example.Request").msgclass
+  Response = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("example.Response").msgclass
 end

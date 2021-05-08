@@ -8,13 +8,13 @@ module Example
   module Greeter
     class Service
 
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = 'example.Greeter'
 
-      rpc :Hello, Request, Response
+      rpc :Hello, ::Example::Request, ::Example::Response
     end
 
     Stub = Service.rpc_stub_class

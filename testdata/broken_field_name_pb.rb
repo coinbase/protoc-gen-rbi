@@ -13,5 +13,5 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module Example
-  Broken_field_name = Google::Protobuf::DescriptorPool.generated_pool.lookup("example.broken_field_name").msgclass
+  Broken_field_name = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("example.broken_field_name").msgclass
 end
