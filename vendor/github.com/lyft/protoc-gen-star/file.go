@@ -16,6 +16,18 @@ type File interface {
 	// Descriptor returns the underlying descriptor for the proto file
 	Descriptor() *descriptor.FileDescriptorProto
 
+	// TransitiveImports returns all direct and transitive dependencies of this
+	// File. Use Imports to obtain only direct dependencies.
+	TransitiveImports() []File
+
+	// UnusedImports returns all imported files that aren't used by the current
+	// File. Public imports are not included in this list.
+	UnusedImports() []File
+
+	// Dependents returns all files where the given file was directly or
+	// transitively imported.
+	Dependents() []File
+
 	// Services returns the services from this proto file.
 	Services() []Service
 
@@ -29,7 +41,9 @@ type File interface {
 
 	setPackage(p Package)
 
-	addFileDep(fl File)
+	addFileDependency(fl File)
+
+	addDependent(fl File)
 
 	addService(s Service)
 
@@ -42,7 +56,9 @@ type file struct {
 	pkg                     Package
 	enums                   []Enum
 	defExts                 []Extension
-	fileDeps                []File
+	dependents              []File
+	dependentsCache         []File
+	fileDependencies        []File
 	msgs                    []Message
 	srvs                    []Service
 	buildTarget             bool
@@ -90,26 +106,79 @@ func (f *file) Services() []Service {
 	return f.srvs
 }
 
-func (f *file) Imports() (i []File) {
-	// Mapping for avoiding duplicate entries
-	importMap := make(map[string]File, len(f.AllMessages())+len(f.srvs))
-	for _, fl := range f.fileDeps {
+func (f *file) Imports() []File {
+	out := make([]File, len(f.fileDependencies))
+	copy(out, f.fileDependencies)
+	return out
+}
+
+func (f *file) TransitiveImports() []File {
+	importMap := make(map[string]File, len(f.fileDependencies))
+	for _, fl := range f.fileDependencies {
 		importMap[fl.Name().String()] = fl
-	}
-	for _, m := range f.AllMessages() {
-		for _, imp := range m.Imports() {
+		for _, imp := range fl.TransitiveImports() {
 			importMap[imp.File().Name().String()] = imp
 		}
 	}
-	for _, s := range f.srvs {
-		for _, imp := range s.Imports() {
-			importMap[imp.File().Name().String()] = imp
-		}
-	}
+
+	out := make([]File, 0, len(importMap))
 	for _, imp := range importMap {
-		i = append(i, imp)
+		out = append(out, imp)
 	}
-	return
+
+	return out
+}
+
+func (f *file) UnusedImports() []File {
+	public := make(map[int]struct{}, len(f.desc.PublicDependency))
+	for _, i := range f.desc.PublicDependency {
+		public[int(i)] = struct{}{}
+	}
+
+	mp := make(map[string]File, len(f.fileDependencies))
+	for i, fl := range f.fileDependencies {
+		if _, ok := public[i]; ok {
+			continue
+		}
+		mp[fl.Name().String()] = fl
+	}
+
+	for _, msg := range f.AllMessages() {
+		for _, imp := range msg.Imports() {
+			delete(mp, imp.Name().String())
+		}
+	}
+
+	for _, svc := range f.Services() {
+		for _, imp := range svc.Imports() {
+			delete(mp, imp.Name().String())
+		}
+	}
+
+	out := make([]File, 0, len(mp))
+	for _, fl := range mp {
+		out = append(out, fl)
+	}
+
+	return out
+}
+
+func (f *file) Dependents() []File {
+	if f.dependentsCache == nil {
+		set := make(map[string]File)
+		for _, fl := range f.dependents {
+			set[fl.Name().String()] = fl
+			for _, d := range fl.Dependents() {
+				set[d.Name().String()] = d
+			}
+		}
+
+		f.dependentsCache = make([]File, 0, len(set))
+		for _, d := range set {
+			f.dependentsCache = append(f.dependentsCache, d)
+		}
+	}
+	return f.dependentsCache
 }
 
 func (f *file) Extension(desc *proto.ExtensionDesc, ext interface{}) (bool, error) {
@@ -167,8 +236,12 @@ func (f *file) addEnum(e Enum) {
 	f.enums = append(f.enums, e)
 }
 
-func (f *file) addFileDep(fl File) {
-	f.fileDeps = append(f.fileDeps, fl)
+func (f *file) addFileDependency(fl File) {
+	f.fileDependencies = append(f.fileDependencies, fl)
+}
+
+func (f *file) addDependent(fl File) {
+	f.dependents = append(f.dependents, fl)
 }
 
 func (f *file) addMessage(m Message) {
