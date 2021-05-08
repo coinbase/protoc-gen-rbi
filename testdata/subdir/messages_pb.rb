@@ -42,6 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       map :string_map_value, :string, :message, 26, "testdata.subdir.IntegerMessage"
       map :int32_map_value, :int32, :message, 27, "testdata.subdir.IntegerMessage"
       map :enum_map_value, :string, :enum, 28, "testdata.subdir.AllTypes.Corpus"
+      proto3_optional :optional_bool, :bool, 29
       oneof :test_oneof do
         optional :name, :string, 24
         optional :sub_message, :bool, 25

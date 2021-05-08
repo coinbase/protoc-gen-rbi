@@ -150,7 +150,8 @@ class Testdata::Subdir::AllTypes
       sub_message: T.nilable(T::Boolean),
       string_map_value: T.nilable(T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)]),
       int32_map_value: T.nilable(T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)]),
-      enum_map_value: T.nilable(T::Hash[String, T.any(Symbol, String, Integer)])
+      enum_map_value: T.nilable(T::Hash[String, T.any(Symbol, String, Integer)]),
+      optional_bool: T.nilable(T::Boolean)
     ).void
   end
   def initialize(
@@ -181,7 +182,8 @@ class Testdata::Subdir::AllTypes
     sub_message: false,
     string_map_value: Google::Protobuf::Map.new(:string, :message, Testdata::Subdir::IntegerMessage),
     int32_map_value: Google::Protobuf::Map.new(:int32, :message, Testdata::Subdir::IntegerMessage),
-    enum_map_value: Google::Protobuf::Map.new(:string, :enum)
+    enum_map_value: Google::Protobuf::Map.new(:string, :enum),
+    optional_bool: false
   )
   end
 
@@ -407,6 +409,22 @@ class Testdata::Subdir::AllTypes
 
   sig { params(value: Google::Protobuf::Map).void }
   def enum_map_value=(value)
+  end
+
+  sig { returns(T::Boolean) }
+  def optional_bool
+  end
+
+  sig { params(value: T::Boolean).void }
+  def optional_bool=(value)
+  end
+
+  sig { returns(T::Boolean) }
+  def has_optional_bool?
+  end
+
+  sig { void }
+  def clear_optional_bool
   end
 
   sig { returns(T.nilable(Symbol)) }
