@@ -159,13 +159,13 @@ class {{ rubyMessageType . }}
   sig { params(value: {{ rubySetterFieldType . }}).void }
   def {{ .Name }}=(value)
   end
-{{ if optional . }}
-  sig { returns(T::Boolean) }
-  def has_{{ .Name }}?
-  end
 
   sig { void }
   def clear_{{ .Name }}
+  end
+{{ if optional . }}
+  sig { returns(T::Boolean) }
+  def has_{{ .Name }}?
   end
 {{ end }}{{ end }}{{ range .OneOfs }}{{ if not (optionalOneOf .) }}
   sig { returns(T.nilable(Symbol)) }
