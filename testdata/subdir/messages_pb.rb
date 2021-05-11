@@ -42,6 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       map :string_map_value, :string, :message, 26, "testdata.subdir.IntegerMessage"
       map :int32_map_value, :int32, :message, 27, "testdata.subdir.IntegerMessage"
       map :enum_map_value, :string, :enum, 28, "testdata.subdir.AllTypes.Corpus"
+      proto3_optional :optional_bool, :bool, 29
       oneof :test_oneof do
         optional :name, :string, 24
         optional :sub_message, :bool, 25
@@ -69,13 +70,13 @@ end
 
 module Testdata
   module Subdir
-    IntegerMessage = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage").msgclass
-    IntegerMessage::InnerNestedMessage = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage.InnerNestedMessage").msgclass
-    IntegerMessage::NestedEmpty = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage.NestedEmpty").msgclass
-    Empty = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.Empty").msgclass
-    AllTypes = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes").msgclass
-    AllTypes::InnerMessage = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.InnerMessage").msgclass
-    AllTypes::Corpus = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.Corpus").enummodule
-    AllTypes::EnumAllowingAlias = Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.EnumAllowingAlias").enummodule
+    IntegerMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage").msgclass
+    IntegerMessage::InnerNestedMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage.InnerNestedMessage").msgclass
+    IntegerMessage::NestedEmpty = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.IntegerMessage.NestedEmpty").msgclass
+    Empty = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.Empty").msgclass
+    AllTypes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes").msgclass
+    AllTypes::InnerMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.InnerMessage").msgclass
+    AllTypes::Corpus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.Corpus").enummodule
+    AllTypes::EnumAllowingAlias = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("testdata.subdir.AllTypes.EnumAllowingAlias").enummodule
   end
 end

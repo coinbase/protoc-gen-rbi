@@ -15,6 +15,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module Example
-  Lowercase = Google::Protobuf::DescriptorPool.generated_pool.lookup("example.lowercase").msgclass
-  Lowercase_with_underscores = Google::Protobuf::DescriptorPool.generated_pool.lookup("example.lowercase_with_underscores").msgclass
+  Lowercase = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("example.lowercase").msgclass
+  Lowercase_with_underscores = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("example.lowercase_with_underscores").msgclass
 end

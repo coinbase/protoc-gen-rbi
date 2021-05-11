@@ -72,4 +72,6 @@ message AllTypes {
   map<string, IntegerMessage> string_map_value = 26;
   map<int32, IntegerMessage> int32_map_value = 27;
   map<string, Corpus> enum_map_value = 28;
+
+  optional bool optional_bool = 29;
 }

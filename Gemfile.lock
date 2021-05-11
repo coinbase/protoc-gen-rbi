@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    grpc-tools (1.25.0)
+    grpc-tools (1.37.1)
 
 PLATFORMS
   ruby

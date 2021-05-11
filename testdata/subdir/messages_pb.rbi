@@ -47,6 +47,10 @@ class Testdata::Subdir::IntegerMessage
   def value=(value)
   end
 
+  sig { void }
+  def clear_value
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -150,7 +154,8 @@ class Testdata::Subdir::AllTypes
       sub_message: T.nilable(T::Boolean),
       string_map_value: T.nilable(T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)]),
       int32_map_value: T.nilable(T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)]),
-      enum_map_value: T.nilable(T::Hash[String, T.any(Symbol, String, Integer)])
+      enum_map_value: T.nilable(T::Hash[String, T.any(Symbol, String, Integer)]),
+      optional_bool: T.nilable(T::Boolean)
     ).void
   end
   def initialize(
@@ -181,7 +186,8 @@ class Testdata::Subdir::AllTypes
     sub_message: false,
     string_map_value: Google::Protobuf::Map.new(:string, :message, Testdata::Subdir::IntegerMessage),
     int32_map_value: Google::Protobuf::Map.new(:int32, :message, Testdata::Subdir::IntegerMessage),
-    enum_map_value: Google::Protobuf::Map.new(:string, :enum)
+    enum_map_value: Google::Protobuf::Map.new(:string, :enum),
+    optional_bool: false
   )
   end
 
@@ -193,12 +199,20 @@ class Testdata::Subdir::AllTypes
   def double_value=(value)
   end
 
+  sig { void }
+  def clear_double_value
+  end
+
   sig { returns(Float) }
   def float_value
   end
 
   sig { params(value: Float).void }
   def float_value=(value)
+  end
+
+  sig { void }
+  def clear_float_value
   end
 
   sig { returns(Integer) }
@@ -209,12 +223,20 @@ class Testdata::Subdir::AllTypes
   def int32_value=(value)
   end
 
+  sig { void }
+  def clear_int32_value
+  end
+
   sig { returns(Integer) }
   def int64_value
   end
 
   sig { params(value: Integer).void }
   def int64_value=(value)
+  end
+
+  sig { void }
+  def clear_int64_value
   end
 
   sig { returns(Integer) }
@@ -225,12 +247,20 @@ class Testdata::Subdir::AllTypes
   def uint32_value=(value)
   end
 
+  sig { void }
+  def clear_uint32_value
+  end
+
   sig { returns(Integer) }
   def uint64_value
   end
 
   sig { params(value: Integer).void }
   def uint64_value=(value)
+  end
+
+  sig { void }
+  def clear_uint64_value
   end
 
   sig { returns(Integer) }
@@ -241,12 +271,20 @@ class Testdata::Subdir::AllTypes
   def sint32_value=(value)
   end
 
+  sig { void }
+  def clear_sint32_value
+  end
+
   sig { returns(Integer) }
   def sint64_value
   end
 
   sig { params(value: Integer).void }
   def sint64_value=(value)
+  end
+
+  sig { void }
+  def clear_sint64_value
   end
 
   sig { returns(Integer) }
@@ -257,12 +295,20 @@ class Testdata::Subdir::AllTypes
   def fixed32_value=(value)
   end
 
+  sig { void }
+  def clear_fixed32_value
+  end
+
   sig { returns(Integer) }
   def fixed64_value
   end
 
   sig { params(value: Integer).void }
   def fixed64_value=(value)
+  end
+
+  sig { void }
+  def clear_fixed64_value
   end
 
   sig { returns(Integer) }
@@ -273,12 +319,20 @@ class Testdata::Subdir::AllTypes
   def sfixed32_value=(value)
   end
 
+  sig { void }
+  def clear_sfixed32_value
+  end
+
   sig { returns(Integer) }
   def sfixed64_value
   end
 
   sig { params(value: Integer).void }
   def sfixed64_value=(value)
+  end
+
+  sig { void }
+  def clear_sfixed64_value
   end
 
   sig { returns(T::Boolean) }
@@ -289,12 +343,20 @@ class Testdata::Subdir::AllTypes
   def bool_value=(value)
   end
 
+  sig { void }
+  def clear_bool_value
+  end
+
   sig { returns(String) }
   def string_value
   end
 
   sig { params(value: String).void }
   def string_value=(value)
+  end
+
+  sig { void }
+  def clear_string_value
   end
 
   sig { returns(String) }
@@ -305,12 +367,20 @@ class Testdata::Subdir::AllTypes
   def bytes_value=(value)
   end
 
+  sig { void }
+  def clear_bytes_value
+  end
+
   sig { returns(Symbol) }
   def enum_value
   end
 
   sig { params(value: T.any(Symbol, String, Integer)).void }
   def enum_value=(value)
+  end
+
+  sig { void }
+  def clear_enum_value
   end
 
   sig { returns(Symbol) }
@@ -321,12 +391,20 @@ class Testdata::Subdir::AllTypes
   def alias_enum_value=(value)
   end
 
+  sig { void }
+  def clear_alias_enum_value
+  end
+
   sig { returns(T.nilable(Testdata::Subdir::IntegerMessage)) }
   def nested_value
   end
 
   sig { params(value: T.nilable(Testdata::Subdir::IntegerMessage)).void }
   def nested_value=(value)
+  end
+
+  sig { void }
+  def clear_nested_value
   end
 
   sig { returns(T::Array[T.nilable(Testdata::Subdir::IntegerMessage)]) }
@@ -337,12 +415,20 @@ class Testdata::Subdir::AllTypes
   def repeated_nested_value=(value)
   end
 
+  sig { void }
+  def clear_repeated_nested_value
+  end
+
   sig { returns(T::Array[Integer]) }
   def repeated_int32_value
   end
 
   sig { params(value: Google::Protobuf::RepeatedField).void }
   def repeated_int32_value=(value)
+  end
+
+  sig { void }
+  def clear_repeated_int32_value
   end
 
   sig { returns(T::Array[Symbol]) }
@@ -353,12 +439,20 @@ class Testdata::Subdir::AllTypes
   def repeated_enum=(value)
   end
 
+  sig { void }
+  def clear_repeated_enum
+  end
+
   sig { returns(T.nilable(Testdata::Subdir::AllTypes::InnerMessage)) }
   def inner_value
   end
 
   sig { params(value: T.nilable(Testdata::Subdir::AllTypes::InnerMessage)).void }
   def inner_value=(value)
+  end
+
+  sig { void }
+  def clear_inner_value
   end
 
   sig { returns(T.nilable(Testdata::Subdir::IntegerMessage::InnerNestedMessage)) }
@@ -369,12 +463,20 @@ class Testdata::Subdir::AllTypes
   def inner_nested_value=(value)
   end
 
+  sig { void }
+  def clear_inner_nested_value
+  end
+
   sig { returns(String) }
   def name
   end
 
   sig { params(value: String).void }
   def name=(value)
+  end
+
+  sig { void }
+  def clear_name
   end
 
   sig { returns(T::Boolean) }
@@ -385,12 +487,20 @@ class Testdata::Subdir::AllTypes
   def sub_message=(value)
   end
 
+  sig { void }
+  def clear_sub_message
+  end
+
   sig { returns(T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)]) }
   def string_map_value
   end
 
   sig { params(value: Google::Protobuf::Map).void }
   def string_map_value=(value)
+  end
+
+  sig { void }
+  def clear_string_map_value
   end
 
   sig { returns(T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)]) }
@@ -401,12 +511,36 @@ class Testdata::Subdir::AllTypes
   def int32_map_value=(value)
   end
 
+  sig { void }
+  def clear_int32_map_value
+  end
+
   sig { returns(T::Hash[String, Symbol]) }
   def enum_map_value
   end
 
   sig { params(value: Google::Protobuf::Map).void }
   def enum_map_value=(value)
+  end
+
+  sig { void }
+  def clear_enum_map_value
+  end
+
+  sig { returns(T::Boolean) }
+  def optional_bool
+  end
+
+  sig { params(value: T::Boolean).void }
+  def optional_bool=(value)
+  end
+
+  sig { void }
+  def clear_optional_bool
+  end
+
+  sig { returns(T::Boolean) }
+  def has_optional_bool?
   end
 
   sig { returns(T.nilable(Symbol)) }
@@ -466,6 +600,10 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
 
   sig { params(value: Float).void }
   def value=(value)
+  end
+
+  sig { void }
+  def clear_value
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -558,6 +696,10 @@ class Testdata::Subdir::AllTypes::InnerMessage
 
   sig { params(value: String).void }
   def value=(value)
+  end
+
+  sig { void }
+  def clear_value
   end
 
   sig { params(field: String).returns(T.untyped) }

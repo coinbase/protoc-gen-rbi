@@ -40,12 +40,20 @@ class Example::Broken_field_name
   def name=(value)
   end
 
+  sig { void }
+  def clear_name
+  end
+
   sig { returns(String) }
   def Field_name_1
   end
 
   sig { params(value: String).void }
   def Field_name_1=(value)
+  end
+
+  sig { void }
+  def clear_Field_name_1
   end
 
   sig { params(field: String).returns(T.untyped) }

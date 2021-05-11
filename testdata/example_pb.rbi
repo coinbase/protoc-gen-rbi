@@ -46,6 +46,10 @@ class Example::Request
   def name=(value)
   end
 
+  sig { void }
+  def clear_name
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -99,6 +103,10 @@ class Example::Response
 
   sig { params(value: String).void }
   def greeting=(value)
+  end
+
+  sig { void }
+  def clear_greeting
   end
 
   sig { params(field: String).returns(T.untyped) }

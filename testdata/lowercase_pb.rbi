@@ -46,6 +46,10 @@ class Example::Lowercase
   def example_proto_field=(value)
   end
 
+  sig { void }
+  def clear_example_proto_field
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -99,6 +103,10 @@ class Example::Lowercase_with_underscores
 
   sig { params(value: String).void }
   def example_proto_field=(value)
+  end
+
+  sig { void }
+  def clear_example_proto_field
   end
 
   sig { params(field: String).returns(T.untyped) }

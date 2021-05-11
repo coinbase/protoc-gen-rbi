@@ -31,6 +31,8 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 
 	funcs := map[string]interface{}{
 		"increment":                m.increment,
+		"optional":                 m.optional,
+		"optionalOneOf":            m.optionalOneOf,
 		"willGenerateInvalidRuby":  m.willGenerateInvalidRuby,
 		"rubyModules":              ruby_types.RubyModules,
 		"rubyPackage":              ruby_types.RubyPackage,
@@ -77,6 +79,14 @@ func (m *rbiModule) generateServices(f pgs.File) {
 
 func (m *rbiModule) increment(i int) int {
 	return i + 1
+}
+
+func (m *rbiModule) optional(field pgs.Field) bool {
+	return field.Descriptor().GetProto3Optional()
+}
+
+func (m *rbiModule) optionalOneOf(oneOf pgs.OneOf) bool {
+	return len(oneOf.Fields()) == 1 && oneOf.Fields()[0].Descriptor().GetProto3Optional()
 }
 
 func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
@@ -149,11 +159,19 @@ class {{ rubyMessageType . }}
   sig { params(value: {{ rubySetterFieldType . }}).void }
   def {{ .Name }}=(value)
   end
-{{ end }}{{ range .OneOfs }}
+
+  sig { void }
+  def clear_{{ .Name }}
+  end
+{{ if optional . }}
+  sig { returns(T::Boolean) }
+  def has_{{ .Name }}?
+  end
+{{ end }}{{ end }}{{ range .OneOfs }}{{ if not (optionalOneOf .) }}
   sig { returns(T.nilable(Symbol)) }
   def {{ .Name }}
   end
-{{ end }}
+{{ end }}{{ end }}
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
