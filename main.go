@@ -186,7 +186,7 @@ class {{ rubyMessageType . }}
 end
 {{ end }}{{ range .AllEnums }}
 module {{ rubyMessageType . }}{{ range .Values }}
-  {{ .Name }} = T.let({{ .Value }}, Integer){{ end }}
+  self::{{ .Name }} = T.let({{ .Value }}, Integer){{ end }}
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)

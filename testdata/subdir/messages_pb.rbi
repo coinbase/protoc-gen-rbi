@@ -716,13 +716,14 @@ class Testdata::Subdir::AllTypes::InnerMessage
 end
 
 module Testdata::Subdir::AllTypes::Corpus
-  UNIVERSAL = T.let(0, Integer)
-  WEB = T.let(1, Integer)
-  IMAGES = T.let(2, Integer)
-  LOCAL = T.let(3, Integer)
-  NEWS = T.let(4, Integer)
-  PRODUCTS = T.let(5, Integer)
-  VIDEO = T.let(6, Integer)
+  self::UNIVERSAL = T.let(0, Integer)
+  self::WEB = T.let(1, Integer)
+  self::IMAGES = T.let(2, Integer)
+  self::LOCAL = T.let(3, Integer)
+  self::NEWS = T.let(4, Integer)
+  self::PRODUCTS = T.let(5, Integer)
+  self::VIDEO = T.let(6, Integer)
+  self::END = T.let(7, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)
@@ -734,9 +735,9 @@ module Testdata::Subdir::AllTypes::Corpus
 end
 
 module Testdata::Subdir::AllTypes::EnumAllowingAlias
-  UNKNOWN = T.let(0, Integer)
-  STARTED = T.let(1, Integer)
-  RUNNING = T.let(1, Integer)
+  self::UNKNOWN = T.let(0, Integer)
+  self::STARTED = T.let(1, Integer)
+  self::RUNNING = T.let(1, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)
