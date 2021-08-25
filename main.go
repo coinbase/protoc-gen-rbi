@@ -195,6 +195,10 @@ module {{ rubyMessageType . }}{{ range .Values }}
   sig { params(value: Symbol).returns(T.nilable(Integer)) }
   def self.resolve(value)
   end
+
+  sig { returns(::Google::Protobuf::EnumDescriptor) }
+  def self.descriptor
+  end
 end
 {{ end }}`
 
