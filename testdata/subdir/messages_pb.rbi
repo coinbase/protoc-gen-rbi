@@ -732,6 +732,10 @@ module Testdata::Subdir::AllTypes::Corpus
   sig { params(value: Symbol).returns(T.nilable(Integer)) }
   def self.resolve(value)
   end
+
+  sig { returns(::Google::Protobuf::EnumDescriptor) }
+  def self.descriptor
+  end
 end
 
 module Testdata::Subdir::AllTypes::EnumAllowingAlias
@@ -745,5 +749,9 @@ module Testdata::Subdir::AllTypes::EnumAllowingAlias
 
   sig { params(value: Symbol).returns(T.nilable(Integer)) }
   def self.resolve(value)
+  end
+
+  sig { returns(::Google::Protobuf::EnumDescriptor) }
+  def self.descriptor
   end
 end
