@@ -49,7 +49,7 @@ func RubyPackage(file pgs.File) string {
 	}
 	pkg = strings.Replace(pkg, ".", "::", -1)
 	// right now the ruby_out doesn't camelcase the ruby_package, but this results in invalid classes, so do it:
-	return pgs.Name(pkg).UpperCamelCase().String()
+	return upperCamelCase(pkg)
 }
 
 func RubyMessageType(entity EntityWithParent) string {
