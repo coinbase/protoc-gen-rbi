@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package package2test;
+
+message Message2test {
+  string field2test = 1;
+}
