@@ -7,6 +7,7 @@ module Package2test; end
 class Package2test::Message2test
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Package2test::Message2test) }
   def self.decode(str)

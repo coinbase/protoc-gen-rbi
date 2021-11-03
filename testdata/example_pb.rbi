@@ -7,6 +7,7 @@ module Example; end
 class Example::Request
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Example::Request) }
   def self.decode(str)
@@ -66,6 +67,7 @@ end
 class Example::Response
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Example::Response) }
   def self.decode(str)
