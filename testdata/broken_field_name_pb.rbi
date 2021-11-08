@@ -7,6 +7,7 @@ module Example; end
 class Example::Broken_field_name
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Example::Broken_field_name) }
   def self.decode(str)

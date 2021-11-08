@@ -8,6 +8,7 @@ module Testdata::Subdir; end
 class Testdata::Subdir::IntegerMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage) }
   def self.decode(str)
@@ -67,6 +68,7 @@ end
 class Testdata::Subdir::Empty
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::Empty) }
   def self.decode(str)
@@ -104,6 +106,7 @@ end
 class Testdata::Subdir::AllTypes
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::AllTypes) }
   def self.decode(str)
@@ -563,6 +566,7 @@ end
 class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
   def self.decode(str)
@@ -622,6 +626,7 @@ end
 class Testdata::Subdir::IntegerMessage::NestedEmpty
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
   def self.decode(str)
@@ -659,6 +664,7 @@ end
 class Testdata::Subdir::AllTypes::InnerMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::AllTypes::InnerMessage) }
   def self.decode(str)

@@ -117,6 +117,7 @@ module {{ . }}; end{{ end }}
 class {{ rubyMessageType . }}
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns({{ rubyMessageType . }}) }
   def self.decode(str)

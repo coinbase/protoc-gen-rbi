@@ -7,6 +7,7 @@ module Example; end
 class Example::Lowercase
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Example::Lowercase) }
   def self.decode(str)
@@ -66,6 +67,7 @@ end
 class Example::Lowercase_with_underscores
   include Google::Protobuf
   include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Example::Lowercase_with_underscores) }
   def self.decode(str)
