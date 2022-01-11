@@ -27,15 +27,15 @@ func (m *rbsModule) InitContext(c pgs.BuildContext) {
 		"optional":                m.optional,
 		"optionalOneOf":           m.optionalOneOf,
 		"willGenerateInvalidRuby": m.willGenerateInvalidRuby,
-		"rubyModules":             ruby_types.RbsModules,
-		"rubyPackage":             ruby_types.RbsPackage,
-		"rubyMessageType":         ruby_types.RbsMessageType,
-		"rubyGetterFieldType":     ruby_types.RbsGetterFieldType,
-		"rubySetterFieldType":     ruby_types.RbsSetterFieldType,
+		"rubyModules":             ruby_types.RubyModules,
+		"rubyPackage":             ruby_types.RubyPackage,
+		"rubyMessageType":         ruby_types.RubyMessageType,
+		"rubyGetterFieldType":     ruby_types.RubyGetterFieldType,
+		"rubySetterFieldType":     ruby_types.RubySetterFieldType,
 		"rbsInitializerFieldType": ruby_types.RbsInitializerFieldType,
-		"rubyFieldValue":          ruby_types.RbsFieldValue,
-		"rubyMethodParamType":     ruby_types.RbsMethodParamType,
-		"rubyMethodReturnType":    ruby_types.RbsMethodReturnType,
+		"rubyFieldValue":          ruby_types.RubyFieldValue,
+		"rubyMethodParamType":     ruby_types.RubyMethodParamType,
+		"rubyMethodReturnType":    ruby_types.RubyMethodReturnType,
 	}
 	m.template = template.Must(template.New("rbs").Funcs(funcs).Parse(templateRbs))
 	m.serviceTemplate = template.Must(template.New("rbsService").Funcs(funcs).Parse(serviceTemplateRbs))

@@ -98,6 +98,32 @@ func rubyFieldType(field pgs.Field, mt methodType) string {
 	return rubyType
 }
 
+func RbsInitializerFieldType(field pgs.Field) string {
+	return rbsFieldType(field, methodTypeInitializer)
+}
+
+func rbsFieldType(field pgs.Field, mt methodType) string {
+	var rbsType string
+
+	t := field.Type()
+
+	if t.IsMap() {
+		rbsType = rubyFieldMapType(field, t, mt)
+	} else if t.IsRepeated() {
+		rbsType = rubyFieldRepeatedType(field, t, mt)
+	} else {
+		rbsType = rubyProtoTypeElem(field, t, mt)
+	}
+
+	// initializer fields can be passed a `nil` value for all field types
+	// messages are already wrapped so we skip those
+	if mt == methodTypeInitializer && (t.IsMap() || t.IsRepeated() || t.ProtoType() != pgs.MessageT) {
+		return fmt.Sprintf("%s?", rbsType)
+	}
+
+	return rbsType
+}
+
 func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
 	if mt == methodTypeSetter {
 		return "Google::Protobuf::Map"
