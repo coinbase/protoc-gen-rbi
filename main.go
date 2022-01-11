@@ -103,6 +103,8 @@ func main() {
 		pgs.DebugEnv("DEBUG"),
 	).RegisterModule(
 		RBI(),
+	).RegisterModule(
+		RBS(),
 	).RegisterPostProcessor(
 		pgsgo.GoFmt(),
 	).Render()
