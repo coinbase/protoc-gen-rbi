@@ -5,9 +5,6 @@ module Example
 end
 
 class Example::Request
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Example::Request
 
@@ -33,7 +30,7 @@ class Example::Request
 
   def clear_name: () -> void
 
-  def has_name?: () -> Boolean
+  def has_name?: () -> bool
 
   def []: (String) -> untyped
 
@@ -43,9 +40,6 @@ class Example::Request
 end
 
 class Example::Response
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Example::Response
 
@@ -71,7 +65,7 @@ class Example::Response
 
   def clear_greeting: () -> void
 
-  def has_greeting?: () -> Boolean
+  def has_greeting?: () -> bool
 
   def []: (String) -> untyped
 

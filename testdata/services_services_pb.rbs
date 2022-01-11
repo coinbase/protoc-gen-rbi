@@ -3,7 +3,6 @@
 
 module Testdata::SimpleMathematics
   class Service
-    include GRPC::GenericService
   end
 
   class Stub < GRPC::ClientStub
@@ -20,7 +19,6 @@ end
 
 module Testdata::ComplexMathematics
   class Service
-    include GRPC::GenericService
   end
 
   class Stub < GRPC::ClientStub

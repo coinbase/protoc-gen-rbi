@@ -5,9 +5,6 @@ module Package2test
 end
 
 class Package2test::Message2test
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Package2test::Message2test
 
@@ -33,7 +30,7 @@ class Package2test::Message2test
 
   def clear_field2test: () -> void
 
-  def has_field2test?: () -> Boolean
+  def has_field2test?: () -> bool
 
   def []: (String) -> untyped
 

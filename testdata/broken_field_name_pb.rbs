@@ -5,9 +5,6 @@ module Example
 end
 
 class Example::Broken_field_name
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Example::Broken_field_name
 
@@ -34,7 +31,7 @@ class Example::Broken_field_name
 
   def clear_name: () -> void
 
-  def has_name?: () -> Boolean
+  def has_name?: () -> bool
 
   def Field_name_1: () -> String
 
@@ -42,7 +39,7 @@ class Example::Broken_field_name
 
   def clear_Field_name_1: () -> void
 
-  def has_Field_name_1?: () -> Boolean
+  def has_Field_name_1?: () -> bool
 
   def []: (String) -> untyped
 

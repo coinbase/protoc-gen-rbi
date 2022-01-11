@@ -3,7 +3,6 @@
 
 module Example::Greeter
   class Service
-    include GRPC::GenericService
   end
 
   class Stub < GRPC::ClientStub

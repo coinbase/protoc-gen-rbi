@@ -72,6 +72,14 @@ func RubySetterFieldType(field pgs.Field) string {
 	return rubyFieldType(field, methodTypeSetter)
 }
 
+func RbsGetterFieldType(field pgs.Field) string {
+	return rbsFieldType(field, methodTypeGetter)
+}
+
+func RbsSetterFieldType(field pgs.Field) string {
+	return rbsFieldType(field, methodTypeSetter)
+}
+
 func RubyInitializerFieldType(field pgs.Field) string {
 	return rubyFieldType(field, methodTypeInitializer)
 }
@@ -108,11 +116,11 @@ func rbsFieldType(field pgs.Field, mt methodType) string {
 	t := field.Type()
 
 	if t.IsMap() {
-		rbsType = rubyFieldMapType(field, t, mt)
+		rbsType = rbsFieldMapType(field, t, mt)
 	} else if t.IsRepeated() {
-		rbsType = rubyFieldRepeatedType(field, t, mt)
+		rbsType = rbsFieldRepeatedType(field, t, mt)
 	} else {
-		rbsType = rubyProtoTypeElem(field, t, mt)
+		rbsType = rbsProtoTypeElem(field, t, mt)
 	}
 
 	// initializer fields can be passed a `nil` value for all field types
@@ -133,6 +141,15 @@ func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
 	return fmt.Sprintf("T::Hash[%s, %s]", key, value)
 }
 
+func rbsFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
+	if mt == methodTypeSetter {
+		return "Google::Protobuf::Map"
+	}
+	key := rbsProtoTypeElem(field, ft.Key(), mt)
+	value := rbsProtoTypeElem(field, ft.Element(), mt)
+	return fmt.Sprintf("::Hash[%s, %s]", key, value)
+}
+
 func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
 	// An enumerable/array is not accepted at the setter
 	// See: https://github.com/protocolbuffers/protobuf/issues/4969
@@ -142,6 +159,17 @@ func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) str
 	}
 	value := rubyProtoTypeElem(field, ft.Element(), mt)
 	return fmt.Sprintf("T::Array[%s]", value)
+}
+
+func rbsFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
+	// An enumerable/array is not accepted at the setter
+	// See: https://github.com/protocolbuffers/protobuf/issues/4969
+	// See: https://developers.google.com/protocol-buffers/docs/reference/ruby-generated#repeated-fields
+	if mt == methodTypeSetter {
+		return "Google::Protobuf::RepeatedField"
+	}
+	value := rbsProtoTypeElem(field, ft.Element(), mt)
+	return fmt.Sprintf("Array[%s]", value)
 }
 
 func RubyFieldValue(field pgs.Field) string {
@@ -182,6 +210,33 @@ func rubyProtoTypeElem(field pgs.Field, ft FieldType, mt methodType) string {
 	}
 	if pt == pgs.MessageT {
 		return fmt.Sprintf("T.nilable(%s)", RubyMessageType(ft.Embed()))
+	}
+	log.Panicf("Unsupported field type for field: %v\n", field.Name().String())
+	return ""
+}
+
+func rbsProtoTypeElem(field pgs.Field, ft FieldType, mt methodType) string {
+	pt := ft.ProtoType()
+	if pt.IsInt() {
+		return "Integer"
+	}
+	if pt.IsNumeric() {
+		return "Float"
+	}
+	if pt == pgs.StringT || pt == pgs.BytesT {
+		return "String"
+	}
+	if pt == pgs.BoolT {
+		return "bool"
+	}
+	if pt == pgs.EnumT {
+		if mt == methodTypeGetter {
+			return "Symbol"
+		}
+		return "(Symbol | String | Integer)"
+	}
+	if pt == pgs.MessageT {
+		return fmt.Sprintf("%s?", RubyMessageType(ft.Embed()))
 	}
 	log.Panicf("Unsupported field type for field: %v\n", field.Name().String())
 	return ""
