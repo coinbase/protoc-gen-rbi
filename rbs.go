@@ -34,8 +34,8 @@ func (m *rbsModule) InitContext(c pgs.BuildContext) {
 		"rbsSetterFieldType":      ruby_types.RbsSetterFieldType,
 		"rbsInitializerFieldType": ruby_types.RbsInitializerFieldType,
 		"rubyFieldValue":          ruby_types.RubyFieldValue,
-		"rubyMethodParamType":     ruby_types.RubyMethodParamType,
-		"rubyMethodReturnType":    ruby_types.RubyMethodReturnType,
+		"rbsMethodParamType":      ruby_types.RbsMethodParamType,
+		"rbsMethodReturnType":     ruby_types.RbsMethodReturnType,
 	}
 	m.template = template.Must(template.New("rbs").Funcs(funcs).Parse(templateRbs))
 	m.serviceTemplate = template.Must(template.New("rbsService").Funcs(funcs).Parse(serviceTemplateRbs))
@@ -157,7 +157,7 @@ module {{ rubyPackage .File }}::{{ .Name }}
     def initialize: (String, GRPC::Core::ChannelCredentials, untyped kw) -> void
     {{ range .Methods }}
 
-    def {{ .Name.LowerSnakeCase }}: ({{ rubyMethodParamType . }}) -> {{ rubyMethodReturnType . }}
+    def {{ .Name.LowerSnakeCase }}: ({{ rbsMethodParamType . }}) -> {{ rbsMethodReturnType . }}
     {{ end }}
   end
 end

@@ -12,7 +12,7 @@ module Testdata::SimpleMathematics
     def negate: (Testdata::Subdir::IntegerMessage) -> Testdata::Subdir::IntegerMessage
     
 
-    def median: (T::Enumerable[Testdata::Subdir::IntegerMessage]) -> Testdata::Subdir::IntegerMessage
+    def median: (Enumerable[Testdata::Subdir::IntegerMessage]) -> Testdata::Subdir::IntegerMessage
     
   end
 end
@@ -25,13 +25,13 @@ module Testdata::ComplexMathematics
     def initialize: (String, GRPC::Core::ChannelCredentials, untyped kw) -> void
     
 
-    def fibonacci: (Testdata::Subdir::IntegerMessage) -> T::Enumerable[Testdata::Subdir::IntegerMessage]
+    def fibonacci: (Testdata::Subdir::IntegerMessage) -> Enumerable[Testdata::Subdir::IntegerMessage]
     
 
-    def running_max: (T::Enumerable[Testdata::Subdir::IntegerMessage]) -> T::Enumerable[Testdata::Subdir::IntegerMessage]
+    def running_max: (Enumerable[Testdata::Subdir::IntegerMessage]) -> Enumerable[Testdata::Subdir::IntegerMessage]
     
 
-    def periodic_max: (T::Enumerable[Testdata::Subdir::IntegerMessage]) -> T::Enumerable[Testdata::Subdir::IntegerMessage]
+    def periodic_max: (Enumerable[Testdata::Subdir::IntegerMessage]) -> Enumerable[Testdata::Subdir::IntegerMessage]
     
   end
 end

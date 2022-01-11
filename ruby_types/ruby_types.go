@@ -313,10 +313,26 @@ func RubyMethodReturnType(method pgs.Method) string {
 	return rubyMethodType(method.Output(), method.ServerStreaming())
 }
 
+func RbsMethodParamType(method pgs.Method) string {
+	return rbsMethodType(method.Input(), method.ClientStreaming())
+}
+
+func RbsMethodReturnType(method pgs.Method) string {
+	return rbsMethodType(method.Output(), method.ServerStreaming())
+}
+
 func rubyMethodType(message pgs.Message, streaming bool) string {
 	t := RubyMessageType(message)
 	if streaming {
 		return fmt.Sprintf("T::Enumerable[%s]", t)
+	}
+	return t
+}
+
+func rbsMethodType(message pgs.Message, streaming bool) string {
+	t := RubyMessageType(message)
+	if streaming {
+		return fmt.Sprintf("Enumerable[%s]", t)
 	}
 	return t
 }
