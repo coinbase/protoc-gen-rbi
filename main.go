@@ -6,7 +6,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/coinbase/protoc-gen-rbi/ruby_types"
+	"github.com/fundthmcalculus/protoc-gen-rbi/ruby_types"
 
 	pgs "github.com/lyft/protoc-gen-star"
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
