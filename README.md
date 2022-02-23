@@ -1,22 +1,22 @@
-# protoc-gen-rbi
-Protobuf compiler plugin that generates [Sorbet](https://sorbet.org/) `.rbi` "Ruby Interface" files.
+# protoc-gen-rbs
+Protobuf compiler plugin that generates `.rbs` "Ruby Type Specification" files.
 
 ### Installation
 
 ```
-go get github.com/coinbase/protoc-gen-rbi
+go get github.com/fundthmcalculus/protoc-gen-rbs
 ```
 
 ### Usage
 
 ```
-protoc --rbi_out=. example.proto
+protoc --rbs_out=. example.proto
 ```
 
-To disable generation of gRPC `.rbi` files, use the `grpc=false` option:
+To disable generation of gRPC `.rbs` files, use the `grpc=false` option:
 
 ```
-protoc --rbi_out=grpc=false:. example.proto
+protoc --rbs_out=grpc=false:. example.proto
 ```
 
 ### Example

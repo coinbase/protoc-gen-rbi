@@ -16,7 +16,7 @@ const (
 	methodTypeInitializer
 )
 
-// intersection between pgs.FieldType and pgs.FieldTypeElem
+// FieldType intersection between pgs.FieldType and pgs.FieldTypeElem
 type FieldType interface {
 	ProtoType() pgs.ProtoType
 	IsEmbed() bool
@@ -26,7 +26,7 @@ type FieldType interface {
 	Embed() pgs.Message
 }
 
-// intersection between pgs.Message and pgs.Enum
+// EntityWithParent intersection between pgs.Message and pgs.Enum
 type EntityWithParent interface {
 	pgs.Entity
 	Parent() pgs.ParentEntity
@@ -64,58 +64,58 @@ func RubyMessageType(entity EntityWithParent) string {
 	return fmt.Sprintf("%s::%s", RubyPackage(entity.File()), strings.Join(names, "::"))
 }
 
-func RubyGetterFieldType(field pgs.Field) string {
-	return rubyFieldType(field, methodTypeGetter)
+func RbsGetterFieldType(field pgs.Field) string {
+	return rbsFieldType(field, methodTypeGetter)
 }
 
-func RubySetterFieldType(field pgs.Field) string {
-	return rubyFieldType(field, methodTypeSetter)
+func RbsSetterFieldType(field pgs.Field) string {
+	return rbsFieldType(field, methodTypeSetter)
 }
 
-func RubyInitializerFieldType(field pgs.Field) string {
-	return rubyFieldType(field, methodTypeInitializer)
+func RbsInitializerFieldType(field pgs.Field) string {
+	return rbsFieldType(field, methodTypeInitializer)
 }
 
-func rubyFieldType(field pgs.Field, mt methodType) string {
-	var rubyType string
+func rbsFieldType(field pgs.Field, mt methodType) string {
+	var rbsType string
 
 	t := field.Type()
 
 	if t.IsMap() {
-		rubyType = rubyFieldMapType(field, t, mt)
+		rbsType = rbsFieldMapType(field, t, mt)
 	} else if t.IsRepeated() {
-		rubyType = rubyFieldRepeatedType(field, t, mt)
+		rbsType = rbsFieldRepeatedType(field, t, mt)
 	} else {
-		rubyType = rubyProtoTypeElem(field, t, mt)
+		rbsType = rbsProtoTypeElem(field, t, mt)
 	}
 
 	// initializer fields can be passed a `nil` value for all field types
 	// messages are already wrapped so we skip those
 	if mt == methodTypeInitializer && (t.IsMap() || t.IsRepeated() || t.ProtoType() != pgs.MessageT) {
-		return fmt.Sprintf("T.nilable(%s)", rubyType)
+		return fmt.Sprintf("%s?", rbsType)
 	}
 
-	return rubyType
+	return rbsType
 }
 
-func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
+func rbsFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
 	if mt == methodTypeSetter {
 		return "Google::Protobuf::Map"
 	}
-	key := rubyProtoTypeElem(field, ft.Key(), mt)
-	value := rubyProtoTypeElem(field, ft.Element(), mt)
-	return fmt.Sprintf("T::Hash[%s, %s]", key, value)
+	key := rbsProtoTypeElem(field, ft.Key(), mt)
+	value := rbsProtoTypeElem(field, ft.Element(), mt)
+	return fmt.Sprintf("::Hash[%s, %s]", key, value)
 }
 
-func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
+func rbsFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
 	// An enumerable/array is not accepted at the setter
 	// See: https://github.com/protocolbuffers/protobuf/issues/4969
 	// See: https://developers.google.com/protocol-buffers/docs/reference/ruby-generated#repeated-fields
 	if mt == methodTypeSetter {
 		return "Google::Protobuf::RepeatedField"
 	}
-	value := rubyProtoTypeElem(field, ft.Element(), mt)
-	return fmt.Sprintf("T::Array[%s]", value)
+	value := rbsProtoTypeElem(field, ft.Element(), mt)
+	return fmt.Sprintf("Array[%s]", value)
 }
 
 func RubyFieldValue(field pgs.Field) string {
@@ -134,7 +134,7 @@ func RubyFieldValue(field pgs.Field) string {
 	return rubyProtoTypeValue(field, t)
 }
 
-func rubyProtoTypeElem(field pgs.Field, ft FieldType, mt methodType) string {
+func rbsProtoTypeElem(field pgs.Field, ft FieldType, mt methodType) string {
 	pt := ft.ProtoType()
 	if pt.IsInt() {
 		return "Integer"
@@ -146,16 +146,16 @@ func rubyProtoTypeElem(field pgs.Field, ft FieldType, mt methodType) string {
 		return "String"
 	}
 	if pt == pgs.BoolT {
-		return "T::Boolean"
+		return "bool"
 	}
 	if pt == pgs.EnumT {
 		if mt == methodTypeGetter {
 			return "Symbol"
 		}
-		return "T.any(Symbol, String, Integer)"
+		return "(Symbol | String | Integer)"
 	}
 	if pt == pgs.MessageT {
-		return fmt.Sprintf("T.nilable(%s)", RubyMessageType(ft.Embed()))
+		return fmt.Sprintf("%s?", RubyMessageType(ft.Embed()))
 	}
 	log.Panicf("Unsupported field type for field: %v\n", field.Name().String())
 	return ""
@@ -224,18 +224,18 @@ func rubyMapType(ft FieldType) string {
 	return ""
 }
 
-func RubyMethodParamType(method pgs.Method) string {
-	return rubyMethodType(method.Input(), method.ClientStreaming())
+func RbsMethodParamType(method pgs.Method) string {
+	return rbsMethodType(method.Input(), method.ClientStreaming())
 }
 
-func RubyMethodReturnType(method pgs.Method) string {
-	return rubyMethodType(method.Output(), method.ServerStreaming())
+func RbsMethodReturnType(method pgs.Method) string {
+	return rbsMethodType(method.Output(), method.ServerStreaming())
 }
 
-func rubyMethodType(message pgs.Message, streaming bool) string {
+func rbsMethodType(message pgs.Message, streaming bool) string {
 	t := RubyMessageType(message)
 	if streaming {
-		return fmt.Sprintf("T::Enumerable[%s]", t)
+		return fmt.Sprintf("Enumerable[%s]", t)
 	}
 	return t
 }
