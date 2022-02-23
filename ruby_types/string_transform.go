@@ -71,4 +71,3 @@ func transform(s string, mod, first stringTransformer, sep string) string {
 
 	return strings.Join(parts, sep)
 }
-
