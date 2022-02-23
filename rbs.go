@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/fundthmcalculus/protoc-gen-rbi/ruby_types"
+	"github.com/fundthmcalculus/protoc-gen-rbs/ruby_types"
 	"log"
 	"strings"
 	"text/template"

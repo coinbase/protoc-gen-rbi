@@ -1,4 +1,4 @@
-module github.com/fundthmcalculus/protoc-gen-rbi
+module github.com/fundthmcalculus/protoc-gen-rbs
 
 go 1.13
 

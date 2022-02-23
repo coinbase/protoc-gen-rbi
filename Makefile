@@ -14,5 +14,5 @@ test: init install
 	$(eval GRPC_PLUGIN := $(GRPC_TOOLS_LOCATION)/bin/grpc_tools_ruby_protoc_plugin)
 	$(PROTOC_BINARY) --proto_path=testdata --ruby_out=testdata $(PROTOS)
 	$(PROTOC_BINARY) --proto_path=testdata --ruby_grpc_out=testdata --plugin=protoc-gen-ruby_grpc=$(GRPC_PLUGIN) $(PROTOS)
-	$(PROTOC_BINARY) --proto_path=testdata --rbi_out=grpc=true:testdata $(PROTOS)
+	$(PROTOC_BINARY) --proto_path=testdata --rbs_out=grpc=true:testdata $(PROTOS)
 	git diff --exit-code testdata
