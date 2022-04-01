@@ -90,6 +90,9 @@ class Testdata::Subdir::Empty
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -647,6 +650,9 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

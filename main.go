@@ -152,6 +152,9 @@ class {{ rubyMessageType . }}
     {{ .Name }}: {{ rubyFieldValue . }}{{ end }}
   )
   end
+{{ else }}
+  sig {void}
+  def initialize; end
 {{ end }}{{ range .Fields }}
   sig { returns({{ rubyGetterFieldType . }}) }
   def {{ .Name }}
