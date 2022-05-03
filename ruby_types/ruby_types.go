@@ -32,16 +32,6 @@ type EntityWithParent interface {
 	Parent() pgs.ParentEntity
 }
 
-func RubyModules(file pgs.File) []string {
-	p := RubyPackage(file)
-	split := strings.Split(p, "::")
-	modules := make([]string, 0)
-	for i := 0; i < len(split); i++ {
-		modules = append(modules, strings.Join(split[0:i+1], "::"))
-	}
-	return modules
-}
-
 func RubyPackage(file pgs.File) string {
 	pkg := file.Descriptor().GetOptions().GetRubyPackage()
 	if pkg == "" {

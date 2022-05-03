@@ -2,8 +2,6 @@
 # source: lowercase.proto
 # typed: strict
 
-module Example; end
-
 class Example::Lowercase
   include Google::Protobuf
   include Google::Protobuf::MessageExts

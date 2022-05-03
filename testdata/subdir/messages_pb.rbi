@@ -2,9 +2,6 @@
 # source: subdir/messages.proto
 # typed: strict
 
-module Testdata; end
-module Testdata::Subdir; end
-
 class Testdata::Subdir::IntegerMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts
