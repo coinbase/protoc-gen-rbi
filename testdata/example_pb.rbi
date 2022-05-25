@@ -2,8 +2,6 @@
 # source: example.proto
 # typed: strict
 
-module Example; end
-
 class Example::Request
   include Google::Protobuf
   include Google::Protobuf::MessageExts
