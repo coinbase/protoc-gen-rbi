@@ -3,9 +3,9 @@
 # typed: strict
 
 class Testdata::Subdir::IntegerMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Testdata::Subdir::IntegerMessage
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -63,9 +63,9 @@ class Testdata::Subdir::IntegerMessage
 end
 
 class Testdata::Subdir::Empty
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::Empty) }
   def self.decode(str)
@@ -83,7 +83,7 @@ class Testdata::Subdir::Empty
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -104,9 +104,9 @@ class Testdata::Subdir::Empty
 end
 
 class Testdata::Subdir::AllTypes
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::AllTypes) }
   def self.decode(str)
@@ -124,7 +124,7 @@ class Testdata::Subdir::AllTypes
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -187,9 +187,9 @@ class Testdata::Subdir::AllTypes
     inner_nested_value: nil,
     name: "",
     sub_message: false,
-    string_map_value: Google::Protobuf::Map.new(:string, :message, Testdata::Subdir::IntegerMessage),
-    int32_map_value: Google::Protobuf::Map.new(:int32, :message, Testdata::Subdir::IntegerMessage),
-    enum_map_value: Google::Protobuf::Map.new(:string, :enum),
+    string_map_value: ::Google::Protobuf::Map.new(:string, :message, Testdata::Subdir::IntegerMessage),
+    int32_map_value: ::Google::Protobuf::Map.new(:int32, :message, Testdata::Subdir::IntegerMessage),
+    enum_map_value: ::Google::Protobuf::Map.new(:string, :enum),
     optional_bool: false
   )
   end
@@ -414,7 +414,7 @@ class Testdata::Subdir::AllTypes
   def repeated_nested_value
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def repeated_nested_value=(value)
   end
 
@@ -426,7 +426,7 @@ class Testdata::Subdir::AllTypes
   def repeated_int32_value
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def repeated_int32_value=(value)
   end
 
@@ -438,7 +438,7 @@ class Testdata::Subdir::AllTypes
   def repeated_enum
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def repeated_enum=(value)
   end
 
@@ -498,7 +498,7 @@ class Testdata::Subdir::AllTypes
   def string_map_value
   end
 
-  sig { params(value: Google::Protobuf::Map).void }
+  sig { params(value: ::Google::Protobuf::Map).void }
   def string_map_value=(value)
   end
 
@@ -510,7 +510,7 @@ class Testdata::Subdir::AllTypes
   def int32_map_value
   end
 
-  sig { params(value: Google::Protobuf::Map).void }
+  sig { params(value: ::Google::Protobuf::Map).void }
   def int32_map_value=(value)
   end
 
@@ -522,7 +522,7 @@ class Testdata::Subdir::AllTypes
   def enum_map_value
   end
 
-  sig { params(value: Google::Protobuf::Map).void }
+  sig { params(value: ::Google::Protobuf::Map).void }
   def enum_map_value=(value)
   end
 
@@ -564,9 +564,9 @@ class Testdata::Subdir::AllTypes
 end
 
 class Testdata::Subdir::IntegerMessage::InnerNestedMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
   def self.decode(str)
@@ -584,7 +584,7 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -624,9 +624,9 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
 end
 
 class Testdata::Subdir::IntegerMessage::NestedEmpty
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
   def self.decode(str)
@@ -644,7 +644,7 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -665,9 +665,9 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
 end
 
 class Testdata::Subdir::AllTypes::InnerMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Testdata::Subdir::AllTypes::InnerMessage) }
   def self.decode(str)
@@ -685,7 +685,7 @@ class Testdata::Subdir::AllTypes::InnerMessage
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
