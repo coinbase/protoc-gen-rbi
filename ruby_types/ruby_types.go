@@ -90,7 +90,7 @@ func rubyFieldType(field pgs.Field, mt methodType) string {
 
 func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
 	if mt == methodTypeSetter {
-		return "Google::Protobuf::Map"
+		return "::Google::Protobuf::Map"
 	}
 	key := rubyProtoTypeElem(field, ft.Key(), mt)
 	value := rubyProtoTypeElem(field, ft.Element(), mt)
@@ -102,7 +102,7 @@ func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) str
 	// See: https://github.com/protocolbuffers/protobuf/issues/4969
 	// See: https://developers.google.com/protocol-buffers/docs/reference/ruby-generated#repeated-fields
 	if mt == methodTypeSetter {
-		return "Google::Protobuf::RepeatedField"
+		return "::Google::Protobuf::RepeatedField"
 	}
 	value := rubyProtoTypeElem(field, ft.Element(), mt)
 	return fmt.Sprintf("T::Array[%s]", value)
@@ -114,10 +114,10 @@ func RubyFieldValue(field pgs.Field) string {
 		key := rubyMapType(t.Key())
 		if t.Element().ProtoType() == pgs.MessageT {
 			value := RubyMessageType(t.Element().Embed())
-			return fmt.Sprintf("Google::Protobuf::Map.new(%s, :message, %s)", key, value)
+			return fmt.Sprintf("::Google::Protobuf::Map.new(%s, :message, %s)", key, value)
 		}
 		value := rubyMapType(t.Element())
-		return fmt.Sprintf("Google::Protobuf::Map.new(%s, %s)", key, value)
+		return fmt.Sprintf("::Google::Protobuf::Map.new(%s, %s)", key, value)
 	} else if t.IsRepeated() {
 		return "[]"
 	}
