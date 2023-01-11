@@ -140,7 +140,7 @@ func rubyProtoTypeElem(field pgs.Field, ft FieldType, mt methodType) string {
 	}
 	if pt == pgs.EnumT {
 		if mt == methodTypeGetter {
-			return "Symbol"
+			return "T.any(Symbol, Integer)"
 		}
 		return "T.any(Symbol, String, Integer)"
 	}
