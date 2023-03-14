@@ -10,7 +10,7 @@ github.com/lyft/protoc-gen-star/lang/go
 # github.com/spf13/afero v1.3.3
 github.com/spf13/afero
 github.com/spf13/afero/mem
-# golang.org/x/text v0.3.2
+# golang.org/x/text v0.3.8
 golang.org/x/text/transform
 golang.org/x/text/unicode/norm
 # google.golang.org/protobuf v1.26.0
