@@ -3,7 +3,6 @@
 # typed: strict
 
 class Example::Request
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
@@ -63,7 +62,6 @@ class Example::Request
 end
 
 class Example::Response
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 

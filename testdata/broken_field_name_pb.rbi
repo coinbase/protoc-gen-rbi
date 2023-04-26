@@ -3,7 +3,6 @@
 # typed: strict
 
 class Example::Broken_field_name
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
