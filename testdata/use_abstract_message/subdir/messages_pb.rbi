@@ -2,10 +2,7 @@
 # source: subdir/messages.proto
 # typed: strict
 
-class Testdata::Subdir::IntegerMessage
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Testdata::Subdir::IntegerMessage < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage) }
   def self.decode(str)
   end
@@ -61,10 +58,7 @@ class Testdata::Subdir::IntegerMessage
   end
 end
 
-class Testdata::Subdir::Empty
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Testdata::Subdir::Empty < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Testdata::Subdir::Empty) }
   def self.decode(str)
   end
@@ -101,10 +95,7 @@ class Testdata::Subdir::Empty
   end
 end
 
-class Testdata::Subdir::AllTypes
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Testdata::Subdir::AllTypes) }
   def self.decode(str)
   end
@@ -560,10 +551,7 @@ class Testdata::Subdir::AllTypes
   end
 end
 
-class Testdata::Subdir::IntegerMessage::InnerNestedMessage
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Testdata::Subdir::IntegerMessage::InnerNestedMessage < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
   def self.decode(str)
   end
@@ -619,10 +607,7 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   end
 end
 
-class Testdata::Subdir::IntegerMessage::NestedEmpty
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Testdata::Subdir::IntegerMessage::NestedEmpty < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
   def self.decode(str)
   end
@@ -659,10 +644,7 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
   end
 end
 
-class Testdata::Subdir::AllTypes::InnerMessage
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Testdata::Subdir::AllTypes::InnerMessage < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Testdata::Subdir::AllTypes::InnerMessage) }
   def self.decode(str)
   end

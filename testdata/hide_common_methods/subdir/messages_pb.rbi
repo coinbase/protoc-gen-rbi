@@ -6,26 +6,6 @@ class Testdata::Subdir::IntegerMessage
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Testdata::Subdir::IntegerMessage).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::IntegerMessage) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Testdata::Subdir::IntegerMessage, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
   sig do
     params(
       value: T.nilable(Integer)
@@ -47,83 +27,19 @@ class Testdata::Subdir::IntegerMessage
   sig { void }
   def clear_value
   end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
 end
 
 class Testdata::Subdir::Empty
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Testdata::Subdir::Empty) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Testdata::Subdir::Empty).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::Empty) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Testdata::Subdir::Empty, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
   sig {void}
   def initialize; end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
 end
 
 class Testdata::Subdir::AllTypes
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Testdata::Subdir::AllTypes) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Testdata::Subdir::AllTypes).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::AllTypes) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Testdata::Subdir::AllTypes, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
 
   sig do
     params(
@@ -546,43 +462,11 @@ class Testdata::Subdir::AllTypes
   sig { returns(T.nilable(Symbol)) }
   def test_oneof
   end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
 end
 
 class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Testdata::Subdir::IntegerMessage::InnerNestedMessage).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::IntegerMessage::InnerNestedMessage) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Testdata::Subdir::IntegerMessage::InnerNestedMessage, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
 
   sig do
     params(
@@ -605,83 +489,19 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
   sig { void }
   def clear_value
   end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
 end
 
 class Testdata::Subdir::IntegerMessage::NestedEmpty
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Testdata::Subdir::IntegerMessage::NestedEmpty).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::IntegerMessage::NestedEmpty) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Testdata::Subdir::IntegerMessage::NestedEmpty, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
   sig {void}
   def initialize; end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
 end
 
 class Testdata::Subdir::AllTypes::InnerMessage
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Testdata::Subdir::AllTypes::InnerMessage) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Testdata::Subdir::AllTypes::InnerMessage).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Testdata::Subdir::AllTypes::InnerMessage) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Testdata::Subdir::AllTypes::InnerMessage, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
 
   sig do
     params(
@@ -703,18 +523,6 @@ class Testdata::Subdir::AllTypes::InnerMessage
 
   sig { void }
   def clear_value
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
   end
 end
 

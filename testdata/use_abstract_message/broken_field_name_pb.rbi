@@ -2,10 +2,7 @@
 # source: broken_field_name.proto
 # typed: strict
 
-class Example::Broken_field_name
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Example::Broken_field_name < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Example::Broken_field_name) }
   def self.decode(str)
   end

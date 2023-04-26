@@ -2,10 +2,7 @@
 # source: lowercase.proto
 # typed: strict
 
-class Example::Lowercase
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Example::Lowercase < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Example::Lowercase) }
   def self.decode(str)
   end
@@ -61,10 +58,7 @@ class Example::Lowercase
   end
 end
 
-class Example::Lowercase_with_underscores
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Example::Lowercase_with_underscores < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Example::Lowercase_with_underscores) }
   def self.decode(str)
   end

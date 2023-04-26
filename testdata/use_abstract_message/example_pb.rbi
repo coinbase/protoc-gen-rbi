@@ -2,10 +2,7 @@
 # source: example.proto
 # typed: strict
 
-class Example::Request
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Example::Request < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Example::Request) }
   def self.decode(str)
   end
@@ -61,10 +58,7 @@ class Example::Request
   end
 end
 
-class Example::Response
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Example::Response < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Example::Response) }
   def self.decode(str)
   end

@@ -2,10 +2,7 @@
 # source: broken_package_name.proto
 # typed: strict
 
-class Package2test::Message2test
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
+class Package2test::Message2test < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Package2test::Message2test) }
   def self.decode(str)
   end
