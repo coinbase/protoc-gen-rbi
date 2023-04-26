@@ -3,7 +3,6 @@
 # typed: strict
 
 class Package2test::Message2test
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 

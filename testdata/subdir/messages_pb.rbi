@@ -3,7 +3,6 @@
 # typed: strict
 
 class Testdata::Subdir::IntegerMessage
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
@@ -63,7 +62,6 @@ class Testdata::Subdir::IntegerMessage
 end
 
 class Testdata::Subdir::Empty
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
@@ -104,7 +102,6 @@ class Testdata::Subdir::Empty
 end
 
 class Testdata::Subdir::AllTypes
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
@@ -564,7 +561,6 @@ class Testdata::Subdir::AllTypes
 end
 
 class Testdata::Subdir::IntegerMessage::InnerNestedMessage
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
@@ -624,7 +620,6 @@ class Testdata::Subdir::IntegerMessage::InnerNestedMessage
 end
 
 class Testdata::Subdir::IntegerMessage::NestedEmpty
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
@@ -665,7 +660,6 @@ class Testdata::Subdir::IntegerMessage::NestedEmpty
 end
 
 class Testdata::Subdir::AllTypes::InnerMessage
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 

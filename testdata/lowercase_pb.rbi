@@ -3,7 +3,6 @@
 # typed: strict
 
 class Example::Lowercase
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
@@ -63,7 +62,6 @@ class Example::Lowercase
 end
 
 class Example::Lowercase_with_underscores
-  include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
