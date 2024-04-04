@@ -18,6 +18,7 @@ module Example::Greeter
     def initialize(host, creds, **kw)
     end
 
+    # some description for hello rpc
     sig do
       params(
         request: Example::Request

@@ -2,14 +2,21 @@ syntax = "proto3";
 
 package example;
 
+// some description for request message
 message Request {
+  // some description for name field
   string name = 1;
 }
 
+// some description for responsee message that is multi line and has a # in it
+// that needs to be escaped
 message Response {
+  // some description for greeting field
   string greeting = 1;
 }
 
+// some description for greeter service
 service Greeter {
+  // some description for hello rpc
   rpc Hello (Request) returns (Response);
 }
