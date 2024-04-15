@@ -42,6 +42,18 @@ func RubyPackage(file pgs.File) string {
 	return upperCamelCase(pkg)
 }
 
+func escapeRubyComment(comment string) string {
+	return strings.ReplaceAll(comment, "\n", "\n#")
+}
+
+func RubyFieldTypeComment(field pgs.Field) string {
+	return escapeRubyComment(strings.TrimSpace(field.SourceCodeInfo().LeadingComments()))
+}
+
+func RubyMessageTypeComment(entity EntityWithParent) string {
+	return escapeRubyComment(strings.TrimSpace(entity.SourceCodeInfo().LeadingComments()))
+}
+
 func RubyMessageType(entity EntityWithParent) string {
 	names := make([]string, 0)
 	outer := entity
@@ -212,6 +224,10 @@ func rubyMapType(ft FieldType) string {
 	}
 	log.Panicf("Unsupported map field type\n")
 	return ""
+}
+
+func RubyMethodTypeComment(method pgs.Method) string {
+	return escapeRubyComment(strings.TrimSpace(method.SourceCodeInfo().LeadingComments()))
 }
 
 func RubyMethodParamType(method pgs.Method) string {

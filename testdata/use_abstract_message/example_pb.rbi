@@ -2,6 +2,7 @@
 # source: example.proto
 # typed: strict
 
+# some description for request message
 class Example::Request < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Example::Request) }
   def self.decode(str)
@@ -33,14 +34,17 @@ class Example::Request < ::Google::Protobuf::AbstractMessage
   )
   end
 
+  # some description for name field
   sig { returns(String) }
   def name
   end
 
+  # some description for name field
   sig { params(value: String).void }
   def name=(value)
   end
 
+  # some description for name field
   sig { void }
   def clear_name
   end
@@ -58,6 +62,8 @@ class Example::Request < ::Google::Protobuf::AbstractMessage
   end
 end
 
+# some description for responsee message that is multi line and has a # in it
+# that needs to be escaped
 class Example::Response < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Example::Response) }
   def self.decode(str)
@@ -89,14 +95,17 @@ class Example::Response < ::Google::Protobuf::AbstractMessage
   )
   end
 
+  # some description for greeting field
   sig { returns(String) }
   def greeting
   end
 
+  # some description for greeting field
   sig { params(value: String).void }
   def greeting=(value)
   end
 
+  # some description for greeting field
   sig { void }
   def clear_greeting
   end

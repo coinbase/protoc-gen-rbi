@@ -6,6 +6,7 @@ require 'example_pb'
 
 module Example
   module Greeter
+    # some description for greeter service
     class Service
 
       include ::GRPC::GenericService
@@ -14,6 +15,7 @@ module Example
       self.unmarshal_class_method = :decode
       self.service_name = 'example.Greeter'
 
+      # some description for hello rpc
       rpc :Hello, ::Example::Request, ::Example::Response
     end
 
