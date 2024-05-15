@@ -278,7 +278,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def clear_bytes_value
   end
 
-  sig { returns(Symbol) }
+  sig { returns(T.any(Symbol, Integer)) }
   def enum_value
   end
 
@@ -290,7 +290,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def clear_enum_value
   end
 
-  sig { returns(Symbol) }
+  sig { returns(T.any(Symbol, Integer)) }
   def alias_enum_value
   end
 
@@ -338,7 +338,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def clear_repeated_int32_value
   end
 
-  sig { returns(T::Array[Symbol]) }
+  sig { returns(T::Array[T.any(Symbol, Integer)]) }
   def repeated_enum
   end
 
@@ -422,7 +422,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def clear_int32_map_value
   end
 
-  sig { returns(T::Hash[String, Symbol]) }
+  sig { returns(T::Hash[String, T.any(Symbol, Integer)]) }
   def enum_map_value
   end
 
