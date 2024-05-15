@@ -5,7 +5,7 @@ import (
 	"log"
 	"strings"
 
-	pgs "github.com/lyft/protoc-gen-star"
+	pgs "github.com/lyft/protoc-gen-star/v2"
 )
 
 type methodType int
