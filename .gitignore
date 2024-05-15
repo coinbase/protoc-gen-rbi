@@ -1,1 +1,8 @@
 .idea
+
+# Ignore these binary files so that if they are different. We don't actually
+# care whether there are differences in these files, as they're generated from
+# protoc itself, not from protoc-gen-rbi, and can simply be different if protoc
+# changes, or if the input proto file changes.
+testbinary/*_bin.proto
+testdata/*.proto.bin
