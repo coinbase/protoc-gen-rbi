@@ -47,11 +47,25 @@ func escapeRubyComment(comment string) string {
 }
 
 func RubyFieldTypeComment(field pgs.Field) string {
-	return escapeRubyComment(strings.TrimSpace(field.SourceCodeInfo().LeadingComments()))
+	sourceCodeInfo := field.SourceCodeInfo()
+	if sourceCodeInfo == nil {
+		// Can happen when the Field is a binary representation of the proto source file,
+		// and thus has no source code.
+		return ""
+	}
+
+	return escapeRubyComment(strings.TrimSpace(sourceCodeInfo.LeadingComments()))
 }
 
 func RubyMessageTypeComment(entity EntityWithParent) string {
-	return escapeRubyComment(strings.TrimSpace(entity.SourceCodeInfo().LeadingComments()))
+	sourceCodeInfo := entity.SourceCodeInfo()
+	if sourceCodeInfo == nil {
+		// Can happen when the Entity is a binary representation of the proto source file,
+		// and thus has no source code.
+		return ""
+	}
+
+	return escapeRubyComment(strings.TrimSpace(sourceCodeInfo.LeadingComments()))
 }
 
 func RubyMessageType(entity EntityWithParent) string {
@@ -227,7 +241,14 @@ func rubyMapType(ft FieldType) string {
 }
 
 func RubyMethodTypeComment(method pgs.Method) string {
-	return escapeRubyComment(strings.TrimSpace(method.SourceCodeInfo().LeadingComments()))
+	sourceCodeInfo := method.SourceCodeInfo()
+	if sourceCodeInfo == nil {
+		// Can happen when the Method is a binary representation of the proto source file,
+		// and thus has no source code.
+		return ""
+	}
+
+	return escapeRubyComment(strings.TrimSpace(sourceCodeInfo.LeadingComments()))
 }
 
 func RubyMethodParamType(method pgs.Method) string {
