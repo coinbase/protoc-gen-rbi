@@ -6,15 +6,20 @@ import (
 	"strings"
 	"text/template"
 
+	"google.golang.org/protobuf/types/pluginpb"
+
 	"github.com/coinbase/protoc-gen-rbi/ruby_types"
 
-	pgs "github.com/lyft/protoc-gen-star"
-	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
+	pgs "github.com/lyft/protoc-gen-star/v2"
+	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
 )
 
 var (
 	validRubyField = regexp.MustCompile(`\A[a-z][A-Za-z0-9_]*\z`)
 )
+
+var SupportedFeatures = uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL)
+
 
 type rbiModule struct {
 	*pgs.ModuleBase
@@ -127,6 +132,7 @@ func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
 func main() {
 	pgs.Init(
 		pgs.DebugEnv("DEBUG"),
+		pgs.SupportedFeatures(&SupportedFeatures),
 	).RegisterModule(
 		RBI(),
 	).RegisterPostProcessor(
