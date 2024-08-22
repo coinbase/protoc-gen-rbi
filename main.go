@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
 	"regexp"
 	"strings"
 	"text/template"
@@ -18,8 +20,9 @@ var (
 	validRubyField = regexp.MustCompile(`\A[a-z][A-Za-z0-9_]*\z`)
 )
 
-var SupportedFeatures = uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL)
-
+var SupportedFeatures = uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL) | uint64(pluginpb.CodeGeneratorResponse_FEATURE_SUPPORTS_EDITIONS)
+var MaximumEdition = int32(1000)
+var MinimumEdition = int32(1000)
 
 type rbiModule struct {
 	*pgs.ModuleBase
@@ -130,9 +133,12 @@ func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
 }
 
 func main() {
+	fmt.Fprintln(os.Stderr, "in main", MinimumEdition)
 	pgs.Init(
 		pgs.DebugEnv("DEBUG"),
 		pgs.SupportedFeatures(&SupportedFeatures),
+		pgs.MaximumEdition(&MaximumEdition),
+		pgs.MinimumEdition(&MinimumEdition),
 	).RegisterModule(
 		RBI(),
 	).RegisterPostProcessor(
@@ -200,11 +206,11 @@ class {{ rubyMessageType . }}{{ if useAbstractMessage }} < ::Google::Protobuf::A
   sig { void }
   def clear_{{ .Name }}
   end
-{{ if optional . }}
+
   sig { returns(T::Boolean) }
   def has_{{ .Name }}?
   end
-{{ end }}{{ end }}{{ range .OneOfs }}{{ if not (optionalOneOf .) }}
+{{ end }}{{ range .OneOfs }}{{ if not (optionalOneOf .) }}
   sig { returns(T.nilable(Symbol)) }
   def {{ .Name }}
   end

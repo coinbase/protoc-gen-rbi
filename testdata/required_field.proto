@@ -1,0 +1,17 @@
+edition = "2023";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FieldOptions {
+  bool required_field = 1000;
+}
+
+message Thing {
+  string foo = 1 [(required_field) = true];
+  InnerThing bar = 2 [(required_field) = true];
+  string optional_value = 3;
+
+  message InnerThing {
+    string another_optional_value = 1;
+  }
+}
