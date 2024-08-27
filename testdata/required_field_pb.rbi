@@ -47,15 +47,15 @@ class ::Thing
   sig { params(value: String).void }
   def foo=(value)
   end
-
+ 
   sig { void }
   def clear_foo
   end
-
+ 
   sig { returns(T::Boolean) }
   def has_foo?
   end
-
+   
   sig { returns(::Thing::InnerThing) }
   def bar
   end
@@ -63,15 +63,15 @@ class ::Thing
   sig { params(value: ::Thing::InnerThing).void }
   def bar=(value)
   end
-
+ 
   sig { void }
   def clear_bar
   end
-
+ 
   sig { returns(T::Boolean) }
   def has_bar?
   end
-
+   
   sig { returns(T.nilable(String)) }
   def optional_value
   end
@@ -79,15 +79,15 @@ class ::Thing
   sig { params(value: T.nilable(String)).void }
   def optional_value=(value)
   end
-
+ 
   sig { void }
   def clear_optional_value
   end
-
+ 
   sig { returns(T::Boolean) }
   def has_optional_value?
   end
-
+   
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -142,15 +142,15 @@ class ::Thing::InnerThing
   sig { params(value: T.nilable(String)).void }
   def another_optional_value=(value)
   end
-
+ 
   sig { void }
   def clear_another_optional_value
   end
-
+ 
   sig { returns(T::Boolean) }
   def has_another_optional_value?
   end
-
+   
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end

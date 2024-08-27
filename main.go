@@ -30,6 +30,7 @@ type rbiModule struct {
 	serviceTpl         *template.Template
 	hideCommonMethods  bool
 	useAbstractMessage bool
+	hasEditions2023    bool
 }
 
 func (m *rbiModule) HideCommonMethods() bool {
@@ -38,6 +39,10 @@ func (m *rbiModule) HideCommonMethods() bool {
 
 func (m *rbiModule) UseAbstractMessage() bool {
 	return m.useAbstractMessage
+}
+
+func (m *rbiModule) HasEditions2023() bool {
+	return m.hasEditions2023
 }
 
 func RBI() *rbiModule { return &rbiModule{ModuleBase: &pgs.ModuleBase{}} }
@@ -76,6 +81,7 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 		"rubyMethodReturnType":     ruby_types.RubyMethodReturnType,
 		"hideCommonMethods":        m.HideCommonMethods,
 		"useAbstractMessage":       m.UseAbstractMessage,
+		"hasEditions2023":          m.HasEditions2023,
 	}
 
 	m.tpl = template.Must(template.New("rbi").Funcs(funcs).Parse(tpl))
@@ -102,6 +108,7 @@ func (m *rbiModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Pac
 
 func (m *rbiModule) generate(f pgs.File) {
 	op := strings.TrimSuffix(f.InputPath().String(), ".proto") + "_pb.rbi"
+	m.hasEditions2023 = f.Descriptor().GetEdition() == descriptorpb.Edition_EDITION_2023
 	m.AddGeneratorTemplateFile(op, m.tpl, f)
 }
 
@@ -199,16 +206,16 @@ class {{ rubyMessageType . }}{{ if useAbstractMessage }} < ::Google::Protobuf::A
   sig { params(value: {{ rubySetterFieldType . }}).void }
   def {{ .Name }}=(value)
   end
-{{ if rubyFieldTypeComment . }}
+{{ if hasEditions2023 }} {{ if rubyFieldTypeComment . }}
   # {{ rubyFieldTypeComment . }}{{ end }}
   sig { void }
   def clear_{{ .Name }}
   end
-
+{{ end }} {{ if hasEditions2023 }}
   sig { returns(T::Boolean) }
   def has_{{ .Name }}?
   end
-{{ end }}{{ range .OneOfs }}{{ if not (optionalOneOf .) }}
+  {{ end }} {{ end }}{{ range .OneOfs }}{{ if not (optionalOneOf .) }}
   sig { returns(T.nilable(Symbol)) }
   def {{ .Name }}
   end
