@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"regexp"
@@ -11,6 +10,7 @@ import (
 	"google.golang.org/protobuf/types/pluginpb"
 
 	"github.com/coinbase/protoc-gen-rbi/ruby_types"
+	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
 
 	pgs "github.com/lyft/protoc-gen-star/v2"
 	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
@@ -21,8 +21,8 @@ var (
 )
 
 var SupportedFeatures = uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL) | uint64(pluginpb.CodeGeneratorResponse_FEATURE_SUPPORTS_EDITIONS)
-var MaximumEdition = int32(1000)
-var MinimumEdition = int32(1000)
+var MaximumEdition = int32(descriptorpb.Edition_EDITION_2023)
+var MinimumEdition = int32(descriptorpb.Edition_EDITION_2023)
 
 type rbiModule struct {
 	*pgs.ModuleBase
@@ -133,7 +133,6 @@ func (m *rbiModule) willGenerateInvalidRuby(fields []pgs.Field) bool {
 }
 
 func main() {
-	fmt.Fprintln(os.Stderr, "in main", MinimumEdition)
 	pgs.Init(
 		pgs.DebugEnv("DEBUG"),
 		pgs.SupportedFeatures(&SupportedFeatures),

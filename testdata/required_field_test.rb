@@ -2,10 +2,14 @@ require_relative "required_field_pb"
 
 t = Thing.decode_json('{"foo": "foo", "bar": {}}')
 
-!!t.has_foo? == true
-!!t.has_bar? == true
-!!t.has_optional_value? == false
-!!t.bar.has_another_optional_value? == false
+puts "t.has_foo? #{!!t.has_foo?}"
+puts "t.foo? #{t.foo}"
+puts "t.has_bar? #{!!t.has_bar?}"
+puts "t.bar #{t.bar}"
+puts "t.has_optional_value? #{!!t.has_optional_value?}"
+puts "t.optional_value: #{t.optional_value}"
+puts "t.bar.has_another_optional_value?: #{!!t.bar.has_another_optional_value?}"
+puts "t.bar.another_optional_value: #{t.bar.another_optional_value}"
 
 Google::Protobuf::DescriptorPool.generated_pool.lookup("required_field").get(Thing.descriptor.lookup("foo").options) == true
 
