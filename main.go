@@ -2,18 +2,17 @@ package main
 
 import (
 	"log"
-	"os"
 	"regexp"
 	"strings"
 	"text/template"
 
 	"google.golang.org/protobuf/types/pluginpb"
 
-	"github.com/coinbase/protoc-gen-rbi/ruby_types"
+	"github.com/vaidehi-figma/protoc-gen-rbi/ruby_types"
 	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
 
-	pgs "github.com/lyft/protoc-gen-star/v2"
-	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
+	pgs "github.com/vaidehi-figma/protoc-gen-star"
+	pgsgo "github.com/vaidehi-figma/protoc-gen-star/lang/go"
 )
 
 var (

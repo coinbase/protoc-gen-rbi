@@ -1,6 +1,6 @@
-# github.com/lyft/protoc-gen-star/v2 v2.0.3
-github.com/lyft/protoc-gen-star/v2
-github.com/lyft/protoc-gen-star/v2/lang/go
+# github.com/vaidehi-figma/protoc-gen-star v1.0.1
+github.com/vaidehi-figma/protoc-gen-star
+github.com/vaidehi-figma/protoc-gen-star/lang/go
 # github.com/spf13/afero v1.3.3
 github.com/spf13/afero
 github.com/spf13/afero/mem
