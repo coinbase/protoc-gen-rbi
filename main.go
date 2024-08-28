@@ -206,16 +206,16 @@ class {{ rubyMessageType . }}{{ if useAbstractMessage }} < ::Google::Protobuf::A
   sig { params(value: {{ rubySetterFieldType . }}).void }
   def {{ .Name }}=(value)
   end
-{{ if hasEditions2023 }} {{ if rubyFieldTypeComment . }}
+{{ if rubyFieldTypeComment . }}
   # {{ rubyFieldTypeComment . }}{{ end }}
   sig { void }
   def clear_{{ .Name }}
   end
-{{ end }} {{ if hasEditions2023 }}
+{{ if hasEditions2023 }}
   sig { returns(T::Boolean) }
   def has_{{ .Name }}?
   end
-  {{ end }} {{ end }}{{ range .OneOfs }}{{ if not (optionalOneOf .) }}
+{{ end }}{{ end }}{{ range .OneOfs }}{{ if not (optionalOneOf .) }}
   sig { returns(T.nilable(Symbol)) }
   def {{ .Name }}
   end
