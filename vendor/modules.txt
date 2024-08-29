@@ -1,4 +1,4 @@
-# github.com/vaidehi-figma/protoc-gen-star v1.0.1
+# github.com/vaidehi-figma/protoc-gen-star v1.0.2
 github.com/vaidehi-figma/protoc-gen-star
 github.com/vaidehi-figma/protoc-gen-star/lang/go
 # github.com/spf13/afero v1.3.3
