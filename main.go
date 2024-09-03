@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
 	"regexp"
 	"strings"
 	"text/template"
@@ -109,6 +111,7 @@ func (m *rbiModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Pac
 func (m *rbiModule) generate(f pgs.File) {
 	op := strings.TrimSuffix(f.InputPath().String(), ".proto") + "_pb.rbi"
 	m.hasEditions2023 = f.Descriptor().GetEdition() == descriptorpb.Edition_EDITION_2023
+	fmt.Fprintln(os.Stderr, "Edition: ", f.Descriptor().GetEdition(), "Edition 2023: ", descriptorpb.Edition_EDITION_2023, "hasEditions", m.hasEditions2023)
 	m.AddGeneratorTemplateFile(op, m.tpl, f)
 }
 
