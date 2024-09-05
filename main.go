@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
 	"regexp"
 	"strings"
 	"text/template"
@@ -81,7 +83,7 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 		"rubyMethodReturnType":     ruby_types.RubyMethodReturnType,
 		"hideCommonMethods":        m.HideCommonMethods,
 		"useAbstractMessage":       m.UseAbstractMessage,
-		"hasEditions2023":          m.HasEditions2023,
+		"edition2023":              m.HasEditions2023,
 	}
 
 	m.tpl = template.Must(template.New("rbi").Funcs(funcs).Parse(tpl))
@@ -109,6 +111,7 @@ func (m *rbiModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Pac
 func (m *rbiModule) generate(f pgs.File) {
 	op := strings.TrimSuffix(f.InputPath().String(), ".proto") + "_pb.rbi"
 	m.hasEditions2023 = f.Descriptor().GetEdition() == descriptorpb.Edition_EDITION_2023
+	fmt.Fprintf(os.Stderr, "editions2023?: ", m.hasEditions2023)
 	m.AddGeneratorTemplateFile(op, m.tpl, f)
 }
 
@@ -211,7 +214,9 @@ class {{ rubyMessageType . }}{{ if useAbstractMessage }} < ::Google::Protobuf::A
   sig { void }
   def clear_{{ .Name }}
   end
-{{ if or (hasEditions2023) (optional .) }}
+  # after clear
+{{ if or (edition2023) (optional .) }}
+ # check did I get here
   sig { returns(T::Boolean) }
   def has_{{ .Name }}?
   end
