@@ -157,7 +157,7 @@ func rubyProtoTypeElem(field pgs.Field, ft FieldType, mt methodType) string {
 	if pt.IsInt() {
 		result = "Integer"
 	}
-	if pt.IsNumeric() {
+	if pt.IsNumeric() && !pt.IsInt() {
 		result = "Float"
 	}
 	if pt == pgs.StringT || pt == pgs.BytesT {
