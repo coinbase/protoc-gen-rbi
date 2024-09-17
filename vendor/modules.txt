@@ -1,31 +1,32 @@
-# github.com/lyft/protoc-gen-star/v2 v2.0.3
-github.com/lyft/protoc-gen-star/v2
-github.com/lyft/protoc-gen-star/v2/lang/go
-# github.com/spf13/afero v1.3.3
+# github.com/spf13/afero v1.11.0
 github.com/spf13/afero
+github.com/spf13/afero/internal/common
 github.com/spf13/afero/mem
-# golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+# github.com/vaidehi-figma/protoc-gen-star v1.0.2
+github.com/vaidehi-figma/protoc-gen-star
+github.com/vaidehi-figma/protoc-gen-star/lang/go
+# golang.org/x/mod v0.20.0
 golang.org/x/mod/internal/lazyregexp
 golang.org/x/mod/module
 golang.org/x/mod/semver
-# golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
-golang.org/x/sys/execabs
-# golang.org/x/text v0.3.8
+# golang.org/x/sync v0.8.0
+golang.org/x/sync/errgroup
+# golang.org/x/text v0.17.0
+golang.org/x/text/runes
 golang.org/x/text/transform
 golang.org/x/text/unicode/norm
-# golang.org/x/tools v0.1.12
+# golang.org/x/tools v0.24.0
 golang.org/x/tools/go/ast/astutil
 golang.org/x/tools/imports
 golang.org/x/tools/internal/event
 golang.org/x/tools/internal/event/core
 golang.org/x/tools/internal/event/keys
 golang.org/x/tools/internal/event/label
-golang.org/x/tools/internal/fastwalk
 golang.org/x/tools/internal/gocommand
 golang.org/x/tools/internal/gopathwalk
 golang.org/x/tools/internal/imports
-golang.org/x/tools/internal/typeparams
-# google.golang.org/protobuf v1.33.0
+golang.org/x/tools/internal/stdlib
+# google.golang.org/protobuf v1.34.2
 google.golang.org/protobuf/cmd/protoc-gen-go
 google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo
 google.golang.org/protobuf/compiler/protogen
@@ -35,6 +36,7 @@ google.golang.org/protobuf/internal/descfmt
 google.golang.org/protobuf/internal/descopts
 google.golang.org/protobuf/internal/detrand
 google.golang.org/protobuf/internal/editiondefaults
+google.golang.org/protobuf/internal/editionssupport
 google.golang.org/protobuf/internal/encoding/defval
 google.golang.org/protobuf/internal/encoding/messageset
 google.golang.org/protobuf/internal/encoding/tag

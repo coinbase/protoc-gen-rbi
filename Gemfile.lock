@@ -1,13 +1,16 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    google-protobuf (3.25.4-arm64-darwin)
     grpc-tools (1.54.0)
 
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
+  arm64-darwin-23
 
 DEPENDENCIES
+  google-protobuf (~> 3.25.3)
   grpc-tools
 
 BUNDLED WITH
