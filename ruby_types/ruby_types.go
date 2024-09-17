@@ -179,8 +179,8 @@ func rubyProtoTypeElem(field pgs.Field, ft FieldType, mt methodType) string {
 		log.Panicf("Unsupported field type for field: %v\n", field.Name().String())
 		return ""
 	}
-	if nilable {
-		return fmt.Sprintf("T.nilable(%s)", result)
+	if nilable || pt == pgs.MessageT {
+		result = fmt.Sprintf("T.nilable(%s)", result)
 	}
 	return result
 }
