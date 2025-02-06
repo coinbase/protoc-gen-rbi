@@ -7,26 +7,6 @@ class Example::Request
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Example::Request) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Example::Request).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Example::Request) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Example::Request, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
   sig do
     params(
       name: T.nilable(String)
@@ -63,6 +43,26 @@ class Example::Request
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
+
+  sig { params(str: String).returns(Example::Request) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Request).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Example::Request) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Example::Request, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
 end
 
 # some description for responsee message that is multi line and has a # in it
@@ -70,26 +70,6 @@ end
 class Example::Response
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Example::Response) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Example::Response).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Example::Response) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Example::Response, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
 
   sig do
     params(
@@ -126,5 +106,25 @@ class Example::Response
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
+  end
+
+  sig { params(str: String).returns(Example::Response) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Response).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Example::Response) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Example::Response, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
   end
 end
