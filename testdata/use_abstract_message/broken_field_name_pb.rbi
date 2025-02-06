@@ -3,26 +3,6 @@
 # typed: strict
 
 class Example::Broken_field_name < ::Google::Protobuf::AbstractMessage
-  sig { params(str: String).returns(Example::Broken_field_name) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Example::Broken_field_name).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Example::Broken_field_name) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Example::Broken_field_name, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
   # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
   sig { params(args: T::Hash[T.untyped, T.untyped]).void }
   def initialize(args); end
@@ -61,5 +41,25 @@ class Example::Broken_field_name < ::Google::Protobuf::AbstractMessage
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
+  end
+
+  sig { params(str: String).returns(Example::Broken_field_name) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Broken_field_name).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Example::Broken_field_name) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Example::Broken_field_name, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
   end
 end

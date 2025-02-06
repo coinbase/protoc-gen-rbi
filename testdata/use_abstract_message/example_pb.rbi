@@ -4,26 +4,6 @@
 
 # some description for request message
 class Example::Request < ::Google::Protobuf::AbstractMessage
-  sig { params(str: String).returns(Example::Request) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Example::Request).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Example::Request) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Example::Request, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
   sig do
     params(
       name: T.nilable(String)
@@ -60,31 +40,31 @@ class Example::Request < ::Google::Protobuf::AbstractMessage
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
-end
 
-# some description for responsee message that is multi line and has a # in it
-# that needs to be escaped
-class Example::Response < ::Google::Protobuf::AbstractMessage
-  sig { params(str: String).returns(Example::Response) }
+  sig { params(str: String).returns(Example::Request) }
   def self.decode(str)
   end
 
-  sig { params(msg: Example::Response).returns(String) }
+  sig { params(msg: Example::Request).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Example::Response) }
+  sig { params(str: String, kw: T.untyped).returns(Example::Request) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Example::Response, kw: T.untyped).returns(String) }
+  sig { params(msg: Example::Request, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
   sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+end
 
+# some description for responsee message that is multi line and has a # in it
+# that needs to be escaped
+class Example::Response < ::Google::Protobuf::AbstractMessage
   sig do
     params(
       greeting: T.nilable(String)
@@ -120,5 +100,25 @@ class Example::Response < ::Google::Protobuf::AbstractMessage
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
+  end
+
+  sig { params(str: String).returns(Example::Response) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Response).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Example::Response) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Example::Response, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
   end
 end

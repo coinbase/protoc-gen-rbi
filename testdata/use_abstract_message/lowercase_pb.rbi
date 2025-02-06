@@ -3,6 +3,40 @@
 # typed: strict
 
 class Example::Lowercase < ::Google::Protobuf::AbstractMessage
+  sig do
+    params(
+      example_proto_field: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    example_proto_field: ""
+  )
+  end
+
+  sig { returns(String) }
+  def example_proto_field
+  end
+
+  sig { params(value: String).void }
+  def example_proto_field=(value)
+  end
+
+  sig { void }
+  def clear_example_proto_field
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+
   sig { params(str: String).returns(Example::Lowercase) }
   def self.decode(str)
   end
@@ -22,7 +56,9 @@ class Example::Lowercase < ::Google::Protobuf::AbstractMessage
   sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+end
 
+class Example::Lowercase_with_underscores < ::Google::Protobuf::AbstractMessage
   sig do
     params(
       example_proto_field: T.nilable(String)
@@ -56,9 +92,7 @@ class Example::Lowercase < ::Google::Protobuf::AbstractMessage
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
-end
 
-class Example::Lowercase_with_underscores < ::Google::Protobuf::AbstractMessage
   sig { params(str: String).returns(Example::Lowercase_with_underscores) }
   def self.decode(str)
   end
@@ -77,39 +111,5 @@ class Example::Lowercase_with_underscores < ::Google::Protobuf::AbstractMessage
 
   sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
-  end
-
-  sig do
-    params(
-      example_proto_field: T.nilable(String)
-    ).void
-  end
-  def initialize(
-    example_proto_field: ""
-  )
-  end
-
-  sig { returns(String) }
-  def example_proto_field
-  end
-
-  sig { params(value: String).void }
-  def example_proto_field=(value)
-  end
-
-  sig { void }
-  def clear_example_proto_field
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
   end
 end
