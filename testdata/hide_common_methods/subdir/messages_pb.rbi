@@ -535,6 +535,7 @@ module Testdata::Subdir::AllTypes::Corpus
   self::PRODUCTS = T.let(5, Integer)
   self::VIDEO = T.let(6, Integer)
   self::END = T.let(7, Integer)
+  self::lower = T.let(8, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)

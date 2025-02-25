@@ -60,6 +60,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :PRODUCTS, 5
       value :VIDEO, 6
       value :END, 7
+      value :lower, 8
     end
     add_enum "testdata.subdir.AllTypes.EnumAllowingAlias" do
       value :UNKNOWN, 0
