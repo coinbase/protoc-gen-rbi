@@ -65,26 +65,6 @@ class Example::Response
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Example::Response) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Example::Response).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Example::Response) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Example::Response, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
   sig do
     params(
       greeting: T.nilable(String)
@@ -117,5 +97,25 @@ class Example::Response
 
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
+  end
+
+  sig { params(str: String).returns(Example::Response) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Example::Response).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Example::Response) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Example::Response, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
   end
 end
