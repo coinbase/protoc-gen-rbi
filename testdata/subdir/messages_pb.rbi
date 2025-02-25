@@ -5,6 +5,7 @@
 class Testdata::Subdir::IntegerMessage
   include ::Google::Protobuf::MessageExts
   extend ::Google::Protobuf::MessageExts::ClassMethods
+
   sig do
     params(
       value: T.nilable(Integer)
@@ -38,7 +39,6 @@ class Testdata::Subdir::IntegerMessage
   sig { returns(T::Hash[Symbol, T.untyped]) }
   def to_h
   end
-
 
   sig { params(str: String).returns(Testdata::Subdir::IntegerMessage) }
   def self.decode(str)
