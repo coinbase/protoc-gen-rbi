@@ -42,6 +42,7 @@ message AllTypes {
     PRODUCTS = 5;
     VIDEO = 6;
     END = 7;
+    lower = 8;
   }
   Corpus enum_value = 16;
 

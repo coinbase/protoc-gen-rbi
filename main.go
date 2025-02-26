@@ -71,6 +71,7 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 		"rubyMethodTypeComment":    ruby_types.RubyMethodTypeComment,
 		"rubyMethodParamType":      ruby_types.RubyMethodParamType,
 		"rubyMethodReturnType":     ruby_types.RubyMethodReturnType,
+		"rubyEnumValueName":        ruby_types.RubyEnumValueName,
 		"hideCommonMethods":        m.HideCommonMethods,
 		"useAbstractMessage":       m.UseAbstractMessage,
 	}
@@ -222,7 +223,7 @@ class {{ rubyMessageType . }}{{ if useAbstractMessage }} < ::Google::Protobuf::A
 {{ end }}end
 {{ end }}{{ range .AllEnums }}
 module {{ rubyMessageType . }}{{ range .Values }}
-  self::{{ .Name }} = T.let({{ .Value }}, Integer){{ end }}
+  self::{{ rubyEnumValueName .Name }} = T.let({{ .Value }}, Integer){{ end }}
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)
