@@ -266,3 +266,7 @@ func rubyMethodType(message pgs.Message, streaming bool) string {
 	}
 	return t
 }
+
+func RubyEnumValueName(name pgs.Name) string {
+	return strings.Title(string(name))
+}
