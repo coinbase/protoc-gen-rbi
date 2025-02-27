@@ -115,22 +115,24 @@ func rubyFieldType(field pgs.Field, mt methodType) string {
 }
 
 func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
-	if mt == methodTypeSetter {
-		return "::Google::Protobuf::Map"
-	}
 	key := rubyProtoTypeElem(field, ft.Key(), mt)
 	value := rubyProtoTypeElem(field, ft.Element(), mt)
+
+	if mt == methodTypeSetter {
+		return fmt.Sprintf("::Google::Protobuf::Map[%s, %s]", key, value)
+	}
 	return fmt.Sprintf("T::Hash[%s, %s]", key, value)
 }
 
 func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
+	value := rubyProtoTypeElem(field, ft.Element(), mt)
+
 	// An enumerable/array is not accepted at the setter
 	// See: https://github.com/protocolbuffers/protobuf/issues/4969
 	// See: https://developers.google.com/protocol-buffers/docs/reference/ruby-generated#repeated-fields
 	if mt == methodTypeSetter {
-		return "::Google::Protobuf::RepeatedField"
+		return fmt.Sprintf("::Google::Protobuf::RepeatedField[%s]", value)
 	}
-	value := rubyProtoTypeElem(field, ft.Element(), mt)
 	return fmt.Sprintf("T::Array[%s]", value)
 }
 
