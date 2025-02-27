@@ -7,6 +7,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("example.proto", :syntax => :proto3) do
     add_message "example.Request" do
       optional :name, :string, 1
+      repeated :repeated_value, :string, 2
+      map :map_value, :string, :string, 3
     end
     add_message "example.Response" do
       optional :greeting, :string, 1
