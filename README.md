@@ -4,7 +4,7 @@ Protobuf compiler plugin that generates [Sorbet](https://sorbet.org/) `.rbi` "Ru
 ### Installation
 
 ```
-go get github.com/coinbase/protoc-gen-rbi
+go get github.com/sorbet/protoc-gen-rbi
 ```
 
 ### Usage

@@ -8,7 +8,7 @@ import (
 
 	"google.golang.org/protobuf/types/pluginpb"
 
-	"github.com/coinbase/protoc-gen-rbi/ruby_types"
+	"github.com/sorbet/protoc-gen-rbi/ruby_types"
 
 	pgs "github.com/lyft/protoc-gen-star/v2"
 	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
