@@ -382,7 +382,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def repeated_nested_value
   end
 
-  sig { params(value: ::Google::Protobuf::RepeatedField[T.nilable(Testdata::Subdir::IntegerMessage)]).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def repeated_nested_value=(value)
   end
 
@@ -394,7 +394,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def repeated_int32_value
   end
 
-  sig { params(value: ::Google::Protobuf::RepeatedField[Integer]).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def repeated_int32_value=(value)
   end
 
@@ -406,7 +406,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def repeated_enum
   end
 
-  sig { params(value: ::Google::Protobuf::RepeatedField[T.any(Symbol, String, Integer)]).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def repeated_enum=(value)
   end
 
@@ -466,7 +466,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def string_map_value
   end
 
-  sig { params(value: ::Google::Protobuf::Map[String, T.nilable(Testdata::Subdir::IntegerMessage)]).void }
+  sig { params(value: ::Google::Protobuf::Map).void }
   def string_map_value=(value)
   end
 
@@ -478,7 +478,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def int32_map_value
   end
 
-  sig { params(value: ::Google::Protobuf::Map[Integer, T.nilable(Testdata::Subdir::IntegerMessage)]).void }
+  sig { params(value: ::Google::Protobuf::Map).void }
   def int32_map_value=(value)
   end
 
@@ -490,7 +490,7 @@ class Testdata::Subdir::AllTypes < ::Google::Protobuf::AbstractMessage
   def enum_map_value
   end
 
-  sig { params(value: ::Google::Protobuf::Map[String, T.any(Symbol, String, Integer)]).void }
+  sig { params(value: ::Google::Protobuf::Map).void }
   def enum_map_value=(value)
   end
 

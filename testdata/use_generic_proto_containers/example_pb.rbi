@@ -3,7 +3,10 @@
 # typed: strict
 
 # some description for request message
-class Example::Request < ::Google::Protobuf::AbstractMessage
+class Example::Request
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
+
   sig do
     params(
       name: T.nilable(String),
@@ -39,7 +42,7 @@ class Example::Request < ::Google::Protobuf::AbstractMessage
   end
 
   # some description for repeated field
-  sig { params(value: ::Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField[String]).void }
   def nicknames=(value)
   end
 
@@ -54,7 +57,7 @@ class Example::Request < ::Google::Protobuf::AbstractMessage
   end
 
   # some description for map field
-  sig { params(value: ::Google::Protobuf::Map).void }
+  sig { params(value: ::Google::Protobuf::Map[String, String]).void }
   def attributes=(value)
   end
 
@@ -98,7 +101,10 @@ end
 
 # some description for responsee message that is multi line and has a # in it
 # that needs to be escaped
-class Example::Response < ::Google::Protobuf::AbstractMessage
+class Example::Response
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
+
   sig do
     params(
       greeting: T.nilable(String)

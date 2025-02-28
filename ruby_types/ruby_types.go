@@ -81,26 +81,26 @@ func RubyMessageType(entity EntityWithParent) string {
 }
 
 func RubyGetterFieldType(field pgs.Field) string {
-	return rubyFieldType(field, methodTypeGetter)
+	return rubyFieldType(field, methodTypeGetter, false)
 }
 
-func RubySetterFieldType(field pgs.Field) string {
-	return rubyFieldType(field, methodTypeSetter)
+func RubySetterFieldType(field pgs.Field, genericContainers bool) string {
+	return rubyFieldType(field, methodTypeSetter, genericContainers)
 }
 
 func RubyInitializerFieldType(field pgs.Field) string {
-	return rubyFieldType(field, methodTypeInitializer)
+	return rubyFieldType(field, methodTypeInitializer, false)
 }
 
-func rubyFieldType(field pgs.Field, mt methodType) string {
+func rubyFieldType(field pgs.Field, mt methodType, genericContainers bool) string {
 	var rubyType string
 
 	t := field.Type()
 
 	if t.IsMap() {
-		rubyType = rubyFieldMapType(field, t, mt)
+		rubyType = rubyFieldMapType(field, t, mt, genericContainers)
 	} else if t.IsRepeated() {
-		rubyType = rubyFieldRepeatedType(field, t, mt)
+		rubyType = rubyFieldRepeatedType(field, t, mt, genericContainers)
 	} else {
 		rubyType = rubyProtoTypeElem(field, t, mt)
 	}
@@ -114,7 +114,12 @@ func rubyFieldType(field pgs.Field, mt methodType) string {
 	return rubyType
 }
 
-func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
+func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType, genericContainers bool) string {
+	// A Ruby hash is not accepted at the setter
+	if mt == methodTypeSetter && !genericContainers {
+		return "::Google::Protobuf::Map"
+	}
+
 	key := rubyProtoTypeElem(field, ft.Key(), mt)
 	value := rubyProtoTypeElem(field, ft.Element(), mt)
 
@@ -124,12 +129,16 @@ func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
 	return fmt.Sprintf("T::Hash[%s, %s]", key, value)
 }
 
-func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType) string {
-	value := rubyProtoTypeElem(field, ft.Element(), mt)
-
+func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType, genericContainers bool) string {
 	// An enumerable/array is not accepted at the setter
 	// See: https://github.com/protocolbuffers/protobuf/issues/4969
 	// See: https://developers.google.com/protocol-buffers/docs/reference/ruby-generated#repeated-fields
+	if mt == methodTypeSetter && !genericContainers {
+		return "::Google::Protobuf::RepeatedField"
+	}
+
+	value := rubyProtoTypeElem(field, ft.Element(), mt)
+
 	if mt == methodTypeSetter {
 		return fmt.Sprintf("::Google::Protobuf::RepeatedField[%s]", value)
 	}

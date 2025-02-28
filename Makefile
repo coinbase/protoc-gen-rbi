@@ -27,6 +27,7 @@ test: init install testdata/example_bin-descriptor-set.proto.bin
 	$(PROTOC_BINARY) --proto_path=testdata --rbi_out=grpc=true:testdata $(PROTOS)
 	$(PROTOC_BINARY) --proto_path=testdata --rbi_out=hide_common_methods=true:testdata/hide_common_methods $(PROTOS)
 	$(PROTOC_BINARY) --proto_path=testdata --rbi_out=use_abstract_message=true:testdata/use_abstract_message $(PROTOS)
-	$(PROTOC_BINARY) --proto_path=testdata --rbi_out=grpc=true,hide_common_methods=true,use_abstract_message=true:testdata/all $(PROTOS)
+	$(PROTOC_BINARY) --proto_path=testdata --rbi_out=use_generic_proto_containers=true:testdata/use_generic_proto_containers $(PROTOS)
+	$(PROTOC_BINARY) --proto_path=testdata --rbi_out=grpc=true,hide_common_methods=true,use_abstract_message=true,use_generic_proto_containers=true:testdata/all $(PROTOS)
 	$(PROTOC_BINARY) --descriptor_set_in=testdata/example_bin-descriptor-set.proto.bin --rbi_out=. testbinary/example_bin.proto
 	git diff --exit-code testdata testbinary

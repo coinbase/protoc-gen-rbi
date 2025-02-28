@@ -27,6 +27,7 @@ type rbiModule struct {
 	serviceTpl         *template.Template
 	hideCommonMethods  bool
 	useAbstractMessage bool
+	useGenericProtoContainers bool
 }
 
 func (m *rbiModule) HideCommonMethods() bool {
@@ -35,6 +36,10 @@ func (m *rbiModule) HideCommonMethods() bool {
 
 func (m *rbiModule) UseAbstractMessage() bool {
 	return m.useAbstractMessage
+}
+
+func (m *rbiModule) UseGenericProtoContainers() bool {
+	return m.useGenericProtoContainers
 }
 
 func RBI() *rbiModule { return &rbiModule{ModuleBase: &pgs.ModuleBase{}} }
@@ -54,6 +59,12 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 		log.Panicf("Bad parameter: use_abstract_message\n")
 	}
 	m.useAbstractMessage = useAbstractMessage
+	
+	useGenericProtoContainers, err := m.ctx.Params().BoolDefault("use_generic_proto_containers", false)
+	if err != nil {
+		log.Panicf("Bad parameter: use_generic_proto_containers\n")
+	}
+	m.useGenericProtoContainers = useGenericProtoContainers
 
 	funcs := map[string]interface{}{
 		"increment":                m.increment,
@@ -74,6 +85,7 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 		"rubyEnumValueName":        ruby_types.RubyEnumValueName,
 		"hideCommonMethods":        m.HideCommonMethods,
 		"useAbstractMessage":       m.UseAbstractMessage,
+		"useGenericProtoContainers": m.UseGenericProtoContainers,
 	}
 
 	m.tpl = template.Must(template.New("rbi").Funcs(funcs).Parse(tpl))
@@ -172,7 +184,7 @@ class {{ rubyMessageType . }}{{ if useAbstractMessage }} < ::Google::Protobuf::A
   end
 {{ if rubyFieldTypeComment . }}
   # {{ rubyFieldTypeComment . }}{{ end }}
-  sig { params(value: {{ rubySetterFieldType . }}).void }
+  sig { params(value: {{ rubySetterFieldType . useGenericProtoContainers }}).void }
   def {{ .Name }}=(value)
   end
 {{ if rubyFieldTypeComment . }}
