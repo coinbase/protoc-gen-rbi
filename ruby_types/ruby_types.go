@@ -80,8 +80,8 @@ func RubyMessageType(entity EntityWithParent) string {
 	return fmt.Sprintf("%s::%s", RubyPackage(entity.File()), strings.Join(names, "::"))
 }
 
-func RubyGetterFieldType(field pgs.Field) string {
-	return rubyFieldType(field, methodTypeGetter, false)
+func RubyGetterFieldType(field pgs.Field, genericContainers bool) string {
+	return rubyFieldType(field, methodTypeGetter, genericContainers)
 }
 
 func RubySetterFieldType(field pgs.Field, genericContainers bool) string {
@@ -123,7 +123,7 @@ func rubyFieldMapType(field pgs.Field, ft pgs.FieldType, mt methodType, genericC
 	key := rubyProtoTypeElem(field, ft.Key(), mt)
 	value := rubyProtoTypeElem(field, ft.Element(), mt)
 
-	if mt == methodTypeSetter {
+	if genericContainers {
 		return fmt.Sprintf("::Google::Protobuf::Map[%s, %s]", key, value)
 	}
 	return fmt.Sprintf("T::Hash[%s, %s]", key, value)
@@ -139,7 +139,7 @@ func rubyFieldRepeatedType(field pgs.Field, ft pgs.FieldType, mt methodType, gen
 
 	value := rubyProtoTypeElem(field, ft.Element(), mt)
 
-	if mt == methodTypeSetter {
+	if genericContainers {
 		return fmt.Sprintf("::Google::Protobuf::RepeatedField[%s]", value)
 	}
 	return fmt.Sprintf("T::Array[%s]", value)

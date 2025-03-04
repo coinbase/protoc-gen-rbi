@@ -179,7 +179,7 @@ class {{ rubyMessageType . }}{{ if useAbstractMessage }} < ::Google::Protobuf::A
   def initialize; end
 {{ end }}{{ range .Fields }}{{ if rubyFieldTypeComment . }}
   # {{ rubyFieldTypeComment . }}{{ end }}
-  sig { returns({{ rubyGetterFieldType . }}) }
+  sig { returns({{ rubyGetterFieldType . useGenericProtoContainers }}) }
   def {{ .Name }}
   end
 {{ if rubyFieldTypeComment . }}
