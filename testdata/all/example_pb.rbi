@@ -34,7 +34,7 @@ class Example::Request < ::Google::Protobuf::AbstractMessage
   end
 
   # some description for repeated field
-  sig { returns(T::Array[String]) }
+  sig { returns(::Google::Protobuf::RepeatedField[String]) }
   def nicknames
   end
 
@@ -49,7 +49,7 @@ class Example::Request < ::Google::Protobuf::AbstractMessage
   end
 
   # some description for map field
-  sig { returns(T::Hash[String, String]) }
+  sig { returns(::Google::Protobuf::Map[String, String]) }
   def attributes
   end
 

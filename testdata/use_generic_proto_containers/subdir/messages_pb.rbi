@@ -387,7 +387,7 @@ class Testdata::Subdir::AllTypes
   def clear_nested_value
   end
 
-  sig { returns(T::Array[T.nilable(Testdata::Subdir::IntegerMessage)]) }
+  sig { returns(::Google::Protobuf::RepeatedField[T.nilable(Testdata::Subdir::IntegerMessage)]) }
   def repeated_nested_value
   end
 
@@ -399,7 +399,7 @@ class Testdata::Subdir::AllTypes
   def clear_repeated_nested_value
   end
 
-  sig { returns(T::Array[Integer]) }
+  sig { returns(::Google::Protobuf::RepeatedField[Integer]) }
   def repeated_int32_value
   end
 
@@ -411,7 +411,7 @@ class Testdata::Subdir::AllTypes
   def clear_repeated_int32_value
   end
 
-  sig { returns(T::Array[T.any(Symbol, Integer)]) }
+  sig { returns(::Google::Protobuf::RepeatedField[T.any(Symbol, Integer)]) }
   def repeated_enum
   end
 
@@ -471,7 +471,7 @@ class Testdata::Subdir::AllTypes
   def clear_sub_message
   end
 
-  sig { returns(T::Hash[String, T.nilable(Testdata::Subdir::IntegerMessage)]) }
+  sig { returns(::Google::Protobuf::Map[String, T.nilable(Testdata::Subdir::IntegerMessage)]) }
   def string_map_value
   end
 
@@ -483,7 +483,7 @@ class Testdata::Subdir::AllTypes
   def clear_string_map_value
   end
 
-  sig { returns(T::Hash[Integer, T.nilable(Testdata::Subdir::IntegerMessage)]) }
+  sig { returns(::Google::Protobuf::Map[Integer, T.nilable(Testdata::Subdir::IntegerMessage)]) }
   def int32_map_value
   end
 
@@ -495,7 +495,7 @@ class Testdata::Subdir::AllTypes
   def clear_int32_map_value
   end
 
-  sig { returns(T::Hash[String, T.any(Symbol, Integer)]) }
+  sig { returns(::Google::Protobuf::Map[String, T.any(Symbol, Integer)]) }
   def enum_map_value
   end
 
