@@ -22,11 +22,11 @@ var SupportedFeatures = uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPT
 
 type rbiModule struct {
 	*pgs.ModuleBase
-	ctx                pgsgo.Context
-	tpl                *template.Template
-	serviceTpl         *template.Template
-	hideCommonMethods  bool
-	useAbstractMessage bool
+	ctx                       pgsgo.Context
+	tpl                       *template.Template
+	serviceTpl                *template.Template
+	hideCommonMethods         bool
+	useAbstractMessage        bool
 	useGenericProtoContainers bool
 }
 
@@ -59,7 +59,7 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 		log.Panicf("Bad parameter: use_abstract_message\n")
 	}
 	m.useAbstractMessage = useAbstractMessage
-	
+
 	useGenericProtoContainers, err := m.ctx.Params().BoolDefault("use_generic_proto_containers", false)
 	if err != nil {
 		log.Panicf("Bad parameter: use_generic_proto_containers\n")
@@ -67,24 +67,24 @@ func (m *rbiModule) InitContext(c pgs.BuildContext) {
 	m.useGenericProtoContainers = useGenericProtoContainers
 
 	funcs := map[string]interface{}{
-		"increment":                m.increment,
-		"optional":                 m.optional,
-		"optionalOneOf":            m.optionalOneOf,
-		"willGenerateInvalidRuby":  m.willGenerateInvalidRuby,
-		"rubyPackage":              ruby_types.RubyPackage,
-		"rubyMessageType":          ruby_types.RubyMessageType,
-		"rubyMessageTypeComment":   ruby_types.RubyMessageTypeComment,
-		"rubyFieldTypeComment":     ruby_types.RubyFieldTypeComment,
-		"rubyGetterFieldType":      ruby_types.RubyGetterFieldType,
-		"rubySetterFieldType":      ruby_types.RubySetterFieldType,
-		"rubyInitializerFieldType": ruby_types.RubyInitializerFieldType,
-		"rubyFieldValue":           ruby_types.RubyFieldValue,
-		"rubyMethodTypeComment":    ruby_types.RubyMethodTypeComment,
-		"rubyMethodParamType":      ruby_types.RubyMethodParamType,
-		"rubyMethodReturnType":     ruby_types.RubyMethodReturnType,
-		"rubyEnumValueName":        ruby_types.RubyEnumValueName,
-		"hideCommonMethods":        m.HideCommonMethods,
-		"useAbstractMessage":       m.UseAbstractMessage,
+		"increment":                 m.increment,
+		"optional":                  m.optional,
+		"optionalOneOf":             m.optionalOneOf,
+		"willGenerateInvalidRuby":   m.willGenerateInvalidRuby,
+		"rubyPackage":               ruby_types.RubyPackage,
+		"rubyMessageType":           ruby_types.RubyMessageType,
+		"rubyMessageTypeComment":    ruby_types.RubyMessageTypeComment,
+		"rubyFieldTypeComment":      ruby_types.RubyFieldTypeComment,
+		"rubyGetterFieldType":       ruby_types.RubyGetterFieldType,
+		"rubySetterFieldType":       ruby_types.RubySetterFieldType,
+		"rubyInitializerFieldType":  ruby_types.RubyInitializerFieldType,
+		"rubyFieldValue":            ruby_types.RubyFieldValue,
+		"rubyMethodTypeComment":     ruby_types.RubyMethodTypeComment,
+		"rubyMethodParamType":       ruby_types.RubyMethodParamType,
+		"rubyMethodReturnType":      ruby_types.RubyMethodReturnType,
+		"rubyEnumValueName":         ruby_types.RubyEnumValueName,
+		"hideCommonMethods":         m.HideCommonMethods,
+		"useAbstractMessage":        m.UseAbstractMessage,
 		"useGenericProtoContainers": m.UseGenericProtoContainers,
 	}
 
