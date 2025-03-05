@@ -9,11 +9,15 @@ class Example::Request
 
   sig do
     params(
-      name: T.nilable(String)
+      name: T.nilable(String),
+      nicknames: T.nilable(T::Array[String]),
+      attributes: T.nilable(T::Hash[String, String])
     ).void
   end
   def initialize(
-    name: ""
+    name: "",
+    nicknames: [],
+    attributes: ::Google::Protobuf::Map.new(:string, :string)
   )
   end
 
@@ -30,6 +34,36 @@ class Example::Request
   # some description for name field
   sig { void }
   def clear_name
+  end
+
+  # some description for repeated field
+  sig { returns(T::Array[String]) }
+  def nicknames
+  end
+
+  # some description for repeated field
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
+  def nicknames=(value)
+  end
+
+  # some description for repeated field
+  sig { void }
+  def clear_nicknames
+  end
+
+  # some description for map field
+  sig { returns(T::Hash[String, String]) }
+  def attributes
+  end
+
+  # some description for map field
+  sig { params(value: ::Google::Protobuf::Map).void }
+  def attributes=(value)
+  end
+
+  # some description for map field
+  sig { void }
+  def clear_attributes
   end
 
   sig { params(field: String).returns(T.untyped) }

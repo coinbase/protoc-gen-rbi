@@ -6,6 +6,10 @@ package example;
 message Request {
   // some description for name field
   string name = 1;
+  // some description for repeated field
+  repeated string nicknames = 2;
+  // some description for map field
+  map<string, string> attributes = 3;
 }
 
 // some description for responsee message that is multi line and has a # in it
